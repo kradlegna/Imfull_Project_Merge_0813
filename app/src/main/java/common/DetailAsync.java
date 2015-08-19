@@ -96,7 +96,7 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
     private String downloadUrl(String myurl,String idx) throws IOException {
         InputStream is = null;
         try {
-            URL url = new URL(myurl+"?idx="+idx);
+            URL url = new URL(myurl+"?idx="+"3");//+idx);
             Log.d(TAG, "downloadUrl : " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
