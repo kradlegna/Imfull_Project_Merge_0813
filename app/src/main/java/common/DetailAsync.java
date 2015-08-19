@@ -3,6 +3,7 @@ package common;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,35 +62,38 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
         /* 웹서버로부터 전달받은 데이터를 ListView의 출력해보자!!*/
         ArrayList<ArrayList<String>> list=null;
         try {
-            JSONObject jsonObject = new JSONObject(s);
+            if(s!=null) {
+                JSONObject jsonObject = new JSONObject(s);
 
-            Log.d("+++++ : " + TAG, "s : " + s);
+                Log.d("+++++ : " + TAG, "s : " + s);
 
 
-            list = new  ArrayList<ArrayList<String>>();
+                list = new ArrayList<ArrayList<String>>();
 
-            ArrayList<String> list1 = new ArrayList<String>();
-            ArrayList<String> list2 = new ArrayList<String>();
-            ArrayList<String> list3 = new ArrayList<String>();
+                ArrayList<String> list1 = new ArrayList<String>();
+                ArrayList<String> list2 = new ArrayList<String>();
+                ArrayList<String> list3 = new ArrayList<String>();
 
-            list.add(list1);
-            list.add(list2);
-            list.add(list3);
+                list.add(list1);
+                list.add(list2);
+                list.add(list3);
 
-            JSONArray array = (JSONArray) jsonObject.get("data");
+                JSONArray array = (JSONArray) jsonObject.get("data");
 
-            for(int i=0;i<array.length();i++){
-                for(int a=0;a<array.getJSONArray(i).length();a++){
-                    list.get(i).add((String)(array.getJSONArray(i).get(a)));
+                for (int i = 0; i < array.length(); i++) {
+                    for (int a = 0; a < array.getJSONArray(i).length(); a++) {
+                        list.get(i).add((String) (array.getJSONArray(i).get(a)));
+                    }
+
                 }
-
+            }else{
+                Toast.makeText(activity,"서버와의 연결이 고르지 않습니다.",Toast.LENGTH_SHORT).show();
             }
-
         }
         catch (JSONException e) { e.printStackTrace(); }
         /*프로그래스바의 완료에 적절*/
 
-        activity.setList(list);
+        activity.selectOne(list);
     }
 
     /* 웹서버에 접속하여 스트림을 연결한 후, 그 데이터 읽어오기!!*/

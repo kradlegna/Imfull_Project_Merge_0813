@@ -24,21 +24,11 @@ import imageList.ImageViewURL;
 /**
  * Created by kircheis on 2015. 8. 13..
  */
-public class DetailActivity extends BaseActivity implements View.OnClickListener{
+public class DetailActivity extends BaseActivity implements View.OnClickListener {
 
-    public              String       url        = "http://52.69.226.147:8080/app/selectOne";
+    public String url = "http://52.69.226.147:8080/app/selectOne";
 
-    public ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();;
-
-    public ArrayList<ArrayList<String>> getList() {
-        return list;
-    }
-
-    public void setList(ArrayList<ArrayList<String>> list) {
-        this.list = list;
-    }
-
-    String[] contents=new String[7];
+    String[] contents = new String[7];
     //0=writer
     //1=title
     //2=shopName
@@ -50,9 +40,8 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     ImageButton detail_bt_back;
     RelativeLayout title_layout;
     LinearLayout star_layout;
-    TextView detail_title,detail_writer,detail_shopName,detail_address,detail_phone,count;
-    FlowLayout tag_layout,photo_layout;
-
+    TextView detail_title, detail_writer, detail_shopName, detail_address, detail_phone, count;
+    FlowLayout tag_layout, photo_layout;
 
 
     @Override
@@ -62,51 +51,22 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
         init();
 
-        photo_layout = (FlowLayout)findViewById(R.id.photo_layout);
-        star_layout= (LinearLayout)findViewById(R.id.star_layout);
-        tag_layout= (FlowLayout)findViewById(R.id.tag_layout);
-        detail_phone= (TextView)findViewById(R.id.detail_phone);
-        detail_address= (TextView)findViewById(R.id.detail_address);
-        detail_shopName= (TextView)findViewById(R.id.detail_shopName);
-        detail_writer= (TextView)findViewById(R.id.detail_writer);
-        detail_title= (TextView)findViewById(R.id.detail_title);
-        title_layout= (RelativeLayout)findViewById(R.id.title_layout);
-        count=(TextView)findViewById(R.id.count);
+        photo_layout = (FlowLayout) findViewById(R.id.photo_layout);
+        star_layout = (LinearLayout) findViewById(R.id.star_layout);
+        tag_layout = (FlowLayout) findViewById(R.id.tag_layout);
+        detail_phone = (TextView) findViewById(R.id.detail_phone);
+        detail_address = (TextView) findViewById(R.id.detail_address);
+        detail_shopName = (TextView) findViewById(R.id.detail_shopName);
+        detail_writer = (TextView) findViewById(R.id.detail_writer);
+        detail_title = (TextView) findViewById(R.id.detail_title);
+        title_layout = (RelativeLayout) findViewById(R.id.title_layout);
+        count = (TextView) findViewById(R.id.count);
 
-/*
-        ArrayList<String> list1 = new ArrayList<String >();
-        list1.add("누네띠네");
-        list1.add("맛집");
-        list1.add("맛있는집");
-        list1.add("안드로메다");
-        list1.add("010-2010-2921");
-        list1.add("5");
-        list1.add("15");
-
-        ArrayList<String> list2 = new ArrayList<String >();
-        list2.add("레스토랑");
-        list2.add("한식");
-        list2.add("맛있음");
-        list2.add("좋음");
-        list2.add("청결함");
-        list2.add("싸다");
-
-        ArrayList<String> list3 = new ArrayList<String >();
-
-        list3.add("http://www.nemopan.com/cooking/files/attach/images/1164049/083/934/003/지역별음식_010.jpg");
-        list3.add("http://venuswannabe.com/attach/1/3340712468.jpg");
-        list3.add("https://pbs.twimg.com/profile_images/1763288040/____.JPG");
-
-        Log.d("리스트 길이는  ", "content 리스트" + list1.size() + "category 리스트" + list2.size() + "photo 리스트" + list3.size());
-
-
-*/
 
         String idx = getIntent().getStringExtra("idx");
-        DetailAsync async=new DetailAsync(this);
+        DetailAsync async = new DetailAsync(this);
         async.execute(url, idx);
 
-        selectOne(list);
 
     }
 
@@ -125,17 +85,50 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         mActionBar.setDisplayShowCustomEnabled(true);
     }
 
-    public void selectOne(List<ArrayList<String>> list){
-        setText(list.get(0));
-        addTags(list.get(1));
-        setPhotos(list.get(2));
+    public void selectOne(List<ArrayList<String>> list) {
+        if (list != null) {
+            if (list.get(0) != null && list.get(1) != null && list.get(2) != null) {
+                setText(list.get(0));
+                addTags(list.get(1));
+                setPhotos(list.get(2));
+            }
+        } else {
+            ArrayList<String> list1 = new ArrayList<String>();
+            list1.add("누네띠네");
+            list1.add("맛집");
+            list1.add("맛있는집");
+            list1.add("안드로메다");
+            list1.add("010-2010-2921");
+            list1.add("5");
+            list1.add("15");
+
+            ArrayList<String> list2 = new ArrayList<String>();
+            list2.add("2");
+            list2.add("9");
+            list2.add("14");
+            list2.add("18");
+            list2.add("20");
+            list2.add("23");
+
+            ArrayList<String> list3 = new ArrayList<String>();
+
+            list3.add("http://cfile25.uf.tistory.com/image/2776A236517E58C31D1B1B");
+            list3.add("http://venuswannabe.com/attach/1/3340712468.jpg");
+            list3.add("https://pbs.twimg.com/profile_images/1763288040/____.JPG");
+
+            Log.d("리스트 길이는  ", "content 리스트" + list1.size() + "category 리스트" + list2.size() + "photo 리스트" + list3.size());
+
+            setText(list1);
+            addTags(list2);
+            setPhotos(list3);
+        }
     }
 
     //별표 만들기
-    public void makeStars(String num){
-        int number=Integer.parseInt(num);
+    public void makeStars(String num) {
+        int number = Integer.parseInt(num);
 
-        for(int i=1;i<=number;i++) {
+        for (int i = 1; i <= number; i++) {
             MyImageView mPhotoImageView = new MyImageView(getBaseContext());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30, 30);
             params.setMargins(10, 10, 10, 10);
@@ -143,7 +136,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
             if (i > number) {
                 mPhotoImageView.setImageResource(R.drawable.no_star);
-            }else{
+            } else {
                 mPhotoImageView.setImageResource(R.drawable.star);
             }
             star_layout.addView(mPhotoImageView);      // 레이아웃에 이미지뷰를 등록한다.
@@ -152,9 +145,9 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
 
     //내용채우기
-    public void setText(ArrayList<String> textList){
-        for(int i=0;i<contents.length;i++) {
-            contents[i]=textList.get(i);
+    public void setText(ArrayList<String> textList) {
+        for (int i = 0; i < contents.length; i++) {
+            contents[i] = textList.get(i);
         }
         detail_writer.setText(contents[0]);
         detail_title.setText(contents[1]);
@@ -166,80 +159,80 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     }
 
     //태그 넣기
-    public void addTags(ArrayList<String> tagList){
+    public void addTags(ArrayList<String> tagList) {
 
-        for(int i = 0 ;i<tagList.size();i++){
+        for (int i = 0; i < tagList.size(); i++) {
             FlowLayout.LayoutParams params = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 0, 20, 0);
-            TextView newText=new TextView(this);
+            TextView newText = new TextView(this);
             newText.setLayoutParams(params);
-            String tag=null;
-            if (tagList.get(i)=="1"){
+            String tag = null;
+            if (tagList.get(i) == "1") {
                 newText.setText(R.string.brands);
-            }else if(tagList.get(i)=="2"){
+            } else if (tagList.get(i) == "2") {
                 newText.setText(R.string.personal);
-            }else if(tagList.get(i)=="3"){
+            } else if (tagList.get(i) == "3") {
                 newText.setText(R.string.high_end_restaurant);
-            }else if(tagList.get(i)=="4"){
+            } else if (tagList.get(i) == "4") {
                 newText.setText(R.string.cafe);
-            }else if(tagList.get(i)=="5"){
+            } else if (tagList.get(i) == "5") {
                 newText.setText(R.string.buffet);
-            }else if(tagList.get(i)=="6"){
+            } else if (tagList.get(i) == "6") {
                 newText.setText(R.string.bar);
-            }else if(tagList.get(i)=="7"){
+            } else if (tagList.get(i) == "7") {
                 newText.setText(R.string.korean);
-            }else if(tagList.get(i)=="8"){
+            } else if (tagList.get(i) == "8") {
                 newText.setText(R.string.western);
-            }else if(tagList.get(i)=="9"){
+            } else if (tagList.get(i) == "9") {
                 newText.setText(R.string.japanese);
-            }else if(tagList.get(i)=="10"){
+            } else if (tagList.get(i) == "10") {
                 newText.setText(R.string.fusion);
-            }else if(tagList.get(i)=="11"){
+            } else if (tagList.get(i) == "11") {
                 newText.setText(R.string.chinese);
-            }else if(tagList.get(i)=="12"){
+            } else if (tagList.get(i) == "12") {
                 newText.setText(R.string.asian);
-            }else if(tagList.get(i)=="13"){
+            } else if (tagList.get(i) == "13") {
                 newText.setText(R.string.desert);
-            }else if(tagList.get(i)=="14"){
+            } else if (tagList.get(i) == "14") {
                 newText.setText(R.string.delicious);
-            }else if(tagList.get(i)=="15"){
+            } else if (tagList.get(i) == "15") {
                 newText.setText(R.string.notDelicious);
-            }else if(tagList.get(i)=="16"){
+            } else if (tagList.get(i) == "16") {
                 newText.setText(R.string.good);
-            }else if(tagList.get(i)=="17"){
+            } else if (tagList.get(i) == "17") {
                 newText.setText(R.string.bad);
-            }else if(tagList.get(i)=="18"){
+            } else if (tagList.get(i) == "18") {
                 newText.setText(R.string.clean);
-            }else if(tagList.get(i)=="19"){
+            } else if (tagList.get(i) == "19") {
                 newText.setText(R.string.dirty);
-            }else if(tagList.get(i)=="20"){
+            } else if (tagList.get(i) == "20") {
                 newText.setText(R.string.kind);
-            }else if(tagList.get(i)=="21"){
+            } else if (tagList.get(i) == "21") {
                 newText.setText(R.string.rude);
-            }else if(tagList.get(i)=="22"){
+            } else if (tagList.get(i) == "22") {
                 newText.setText(R.string.expensive);
-            }else if(tagList.get(i)=="23"){
+            } else if (tagList.get(i) == "23") {
                 newText.setText(R.string.cheap);
-            }else if(tagList.get(i)=="24"){
+            } else if (tagList.get(i) == "24") {
                 newText.setText(R.string.brands);
-            }else{
+            } else {
                 //만약 새로운 태그가 추가됬을 경우 어떻게 해야하나.
             }
             newText.setTextColor(-235971);
             //newText.setTextSize();
-            Log.d("태그 ","만들어서 붙였습니다!");
+            Log.d("태그 ", "만들어서 붙였습니다!");
             tag_layout.addView(newText);
         }
     }
 
     //사진 넣기
-    public void setPhotos(ArrayList<String> photoList){
+    public void setPhotos(ArrayList<String> photoList) {
 
-        Toast.makeText(this,"그림 집어오는 중",Toast.LENGTH_SHORT).show();
-        ImageViewURL imageViewURL1 = (ImageViewURL)findViewById(R.id.firstImage);
+        Toast.makeText(this, "그림 집어오는 중", Toast.LENGTH_SHORT).show();
+        ImageViewURL imageViewURL1 = (ImageViewURL) findViewById(R.id.firstImage);
         imageViewURL1.setImageFromURL(photoList.get(0));
 
-        if(photoList.size()>1) {
+        if (photoList.size() > 1) {
             for (int i = 1; i < photoList.size(); i++) {
                 ImageViewURL imageViewURL = new ImageViewURL(getBaseContext()) {
 
@@ -267,7 +260,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch( v.getId() ){
+        switch (v.getId()) {
             case R.id.detail_bt_back:
                 finish();
                 break;
