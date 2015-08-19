@@ -1,6 +1,7 @@
 package imageList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import common.Imfull;
+import imfull.com.imfull_project.DetailActivity;
 import imfull.com.imfull_project.MainActivity;
 import imfull.com.imfull_project.R;
 
@@ -96,7 +98,15 @@ public class ImageListAdapter extends BaseAdapter {
             // add
             layout_star.addView(starImg);
         }
-
+        vi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.setClass(activity, DetailActivity.class);
+                activity.startActivity(intent);
+            }
+        });
         return vi;
     }
 
