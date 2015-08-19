@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
 //  public              String       url        = "http://192.168.0.11:8080";                   // +++ leeah 변경
-    public              String       url        = "http://192.168.0.109:8080";
+    public              String       url        = "http://192.168.0.241:8080";
     private             String       TAG;
 
     ListView                         list;
