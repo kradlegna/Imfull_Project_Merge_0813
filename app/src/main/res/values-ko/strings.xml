@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Imfull_Project</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!--안내문 ect.-->
+    <string name="count">조회수: </string>
+    <string name="chooseTags">검색하고 싶은 태그를 모두 선택 해 주세요!</string>
+    <string name="cancelWritingTitle">글 작성 취소</string>
+    <string name="cancelWriting">뒤로 가시겠습니까?\n(작성중인 글이 모두 사라집니다.)</string>
+    <string name="serch">검색하기</string>
+    <string name="searchedTags">검색한 태그:</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="review">후기</string>
+    <string name="takePhoto">직찍</string>
+
+
+    <!--글쓰기-->
+    <string name="write">새글쓰기</string>
+    <string name="writer">글쓴이:</string>
+    <string name="title">제목:</string>
+    <string name="restaurant">상호명:</string>
+    <string name="address">주소:</string>
+    <string name="contact">연락처:</string>
+    <string name="tagSelection">태그선택:</string>
+    <string name="tags">태그:</string>
+    <string name="stars">제점수는요:</string>
+    <string name="selectedPhoto">선택한 사진:</string>
+    <string name="takeNewPhoto">사진 찍기</string>
+    <string name="choosePhoto">기존 항목 선택</string>
+
+
+    <!--태그-->
+    <string name="restaurantType">레스토랑 종류:</string>
+    <string name="brands">#프랜차이즈</string>
+    <string name="personal">#개인</string>
+    <string name="high_end_restaurant">#레스토랑</string>
+    <string name="cafe">#카페</string>
+    <string name="buffet">#뷔페</string>
+    <string name="bar">#술집/바</string>
+    <string name="foodType">음식종류:</string>
+    <string name="korean">#한식</string>
+    <string name="western">#양식</string>
+    <string name="japanese">#일식</string>
+    <string name="fusion">#퓨전</string>
+    <string name="chinese">#중식</string>
+    <string name="asian">#아시아</string>
+    <string name="desert">#디저트</string>
+    <string name="taste">맛:</string>
+    <string name="delicious">#맛있음</string>
+    <string name="notDelicious">#맛없음</string>
+    <string name="atmosphere">#분위기:</string>
+    <string name="good">#좋음</string>
+    <string name="normal">#보통</string>
+    <string name="bad">#안좋음</string>
+    <string name="cleaness">청결도/환경:</string>
+    <string name="clean">#깨끗함</string>
+    <string name="dirty">#더러움</string>
+    <string name="service">서비스:</string>
+    <string name="kind">#친절함</string>
+    <string name="rude">#불친절함</string>
+    <string name="expensive">#비싸다</string>
+    <string name="cheap">#싸다</string>
+
+
+
+    <!---->
+
+</resources>

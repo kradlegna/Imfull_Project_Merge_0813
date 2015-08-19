@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Imfull_Project</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!--안내문 ect.-->
+    <string name="count">views: </string>
+    <string name="chooseTags">please select the tags to search!</string>
+    <string name="cancelWritingTitle">Cancle Writing</string>
+    <string name="cancelWriting">Are you gonna go back to list page?\n(All that you wrote will disapper)</string>
+    <string name="serch">search</string>
+    <string name="searchedTags">searched tags:</string>
+    <string name="ok">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="review">Review</string>
+    <string name="takePhoto">Photo</string>
+
+
+    <!--글쓰기-->
+    <string name="write">Write</string>
+    <string name="writer">Writer:</string>
+    <string name="title">Title:</string>
+    <string name="restaurant">Restaurant:</string>
+    <string name="address">Address:</string>
+    <string name="contact">Contact:</string>
+    <string name="tagSelection">Tag selection:</string>
+    <string name="tags">Tags:</string>
+    <string name="stars">Stars:</string>
+    <string name="selectedPhoto">Selected photo:</string>
+    <string name="takeNewPhoto">Take photo</string>
+    <string name="choosePhoto">Choose photo</string>
+
+
+    <!--태그-->
+    <string name="restaurantType">Restaurant type:</string>
+    <string name="brands">#brands</string>
+    <string name="personal">#private</string>
+    <string name="high_end_restaurant">#high-end restaurant</string>
+    <string name="cafe">#café</string>
+    <string name="buffet">#buffet</string>
+    <string name="bar">#pub/bar</string>
+    <string name="foodType">Food type:</string>
+    <string name="korean">#Korean</string>
+    <string name="western">#Western</string>
+    <string name="japanese">#Japanese</string>
+    <string name="fusion">#Fusion</string>
+    <string name="chinese">#Chinese</string>
+    <string name="asian">#Asian</string>
+    <string name="desert">#Desert</string>
+    <string name="taste">Taste:</string>
+    <string name="delicious">#delicious</string>
+    <string name="notDelicious">#not delicious</string>
+    <string name="atmosphere">#atmosphere:</string>
+    <string name="good">#good</string>
+    <string name="normal">#normal</string>
+    <string name="bad">#bad</string>
+    <string name="cleaness">cleaness/environment:</string>
+    <string name="clean">#clean</string>
+    <string name="dirty">#dirty</string>
+    <string name="service">service:</string>
+    <string name="kind">#kind</string>
+    <string name="rude">#rude</string>
+    <string name="expensive">#expensive</string>
+    <string name="cheap">#cheap</string>
+
+
+
+    <!---->
+
+</resources>

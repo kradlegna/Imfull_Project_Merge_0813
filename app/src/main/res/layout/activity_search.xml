@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ff434343">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right">
+        <ImageButton
+            android:id="@+id/bt_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:onClick="btnClick"
+            android:src="@drawable/close" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="레스토랑 종류:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/category_franchise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#프랜차이즈"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/category_self_employed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#개인"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/category_restourant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#레스토랑"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/category_buffet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#뷔페"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/category_cafe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#카페"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/category_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#술집/바"
+                    android:textColor="#FF808080" />
+
+
+            </common.FlowLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="음식 종류:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/korean_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#한식"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/western_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#양식"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/japanese_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#일식"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/chinese_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#중식"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/fusion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#퓨전"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/asia_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#아시아"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/desert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#디저트"
+                    android:textColor="#FF808080" />
+
+
+            </common.FlowLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="맛:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/taste_delicious"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#맛있음"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/taste_awfull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#맛없음"
+                    android:textColor="#FF808080" />
+
+
+            </common.FlowLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="분위기:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/mood_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#좋음"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/mood_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#보통"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/mood_bad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#안좋음"
+                    android:textColor="#FF808080" />
+
+
+            </common.FlowLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="청결도/환경:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/cleanliness_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#깨끗함"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/cleanliness_bad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#더러움"
+                    android:textColor="#FF808080" />
+
+
+            </common.FlowLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:text="서비스:"
+                android:textColor="#FFCCCCCC"
+                android:textStyle="bold" />
+
+            <common.FlowLayout
+                android:id="@+id/flow_layout6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dip">
+
+
+                <TextView
+                    android:id="@+id/service_kind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#친절함"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/service_unkind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#불친절함"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/service_cheap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#싸다"
+                    android:textColor="#FF808080" />
+
+                <TextView
+                    android:id="@+id/service_expensive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#비싸다"
+                    android:textColor="#FF808080" />
+
+            </common.FlowLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF650205"
+            android:text="검색하기"
+            android:textColor="#FFFFFECE"
+            android:textStyle="bold"
+            android:onClick="btnClick"/>
+    </LinearLayout>
+
+</LinearLayout>
+

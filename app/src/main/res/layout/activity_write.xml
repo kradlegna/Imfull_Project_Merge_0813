@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="left|center_vertical"
+        android:background="#ffffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="40px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/writer"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+
+                    />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:id="@+id/writer" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:id="@+id/title" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/restaurant"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:id="@+id/shopName" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:id="@+id/address" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:id="@+id/phone" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stars"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+                <ImageView
+                    android:id="@+id/star1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:layout_weight="1"
+                    />
+                <ImageView
+                    android:id="@+id/star2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:layout_weight="1"
+                    />
+                <ImageView
+                    android:id="@+id/star3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:layout_weight="1"
+                    />
+                <ImageView
+                    android:id="@+id/star4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/no_star"
+                    android:layout_weight="1"
+                    />
+                <ImageView
+                    android:id="@+id/star5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/no_star"
+                    android:layout_weight="1"
+                    />
+    </LinearLayout>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#FF808080"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_marginBottom="30px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tags"
+                    android:layout_marginLeft="40px"
+                    android:textColor="#FF808080"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/restaurantType"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout1"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/brands"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/category_franchise" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/personal"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/category_self_employed" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/high_end_restaurant"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/category_restourant" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/buffet"
+                       android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/category_buffet" />
+
+                    <TextView
+                        android:id="@+id/category_cafe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cafe"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bar"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/category_bar" />
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/foodType"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout2"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/korean"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/korean_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/western"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/western_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/japanese"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/japanese_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chinese"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/chinese_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fusion"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/fusion" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asian"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/asia_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/desert"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/desert" />
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/taste"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout3"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/delicious"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/taste_delicious" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/notDelicious"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"
+                        android:id="@+id/taste_awfull" />
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/atmosphere"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout4"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/mood_good"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/good"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/mood_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/normal"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/mood_bad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bad"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/cleaness"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout5"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/cleanliness_good"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/clean"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/cleanliness_bad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dirty"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30px">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF980000"
+                    android:text="@string/service"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout6"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/service_kind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kind"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/service_unkind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/service"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/service_cheap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cheap"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+                    <TextView
+                        android:id="@+id/service_expensive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expensive"
+                        android:textColor="#FF808080"
+                        android:layout_margin="10px"/>
+
+
+
+
+                </common.FlowLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF808080"
+                    android:text="@string/selectedPhoto"
+                    android:textStyle="bold"
+                    android:layout_margin="50px"/>
+
+                <common.FlowLayout
+                    android:id="@+id/flow_layout8"
+                    android:layout_marginLeft="5dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/image"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:maxHeight="100dp"-->
+                        <!--android:maxWidth="100dp"-->
+                        <!--android:layout_margin="50dp"-->
+                        <!--android:background="#eee"-->
+                        <!--/>-->
+
+                </common.FlowLayout>
+
+
+
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/sendContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ok"
+                android:background="#FF650205"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Imfull_Project</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!--안내문 ect.-->
+    <string name="count">浏览: </string>
+    <string name="chooseTags">请选择所有相搜索的</string>
+    <string name="cancelWritingTitle">Cancle Writing</string>
+    <string name="cancelWriting">Are you gonna go back to list page?\n(All that you wrote will disapper)</string>
+    <string name="serch">搜索</string>
+    <string name="searchedTags">搜索的标签:</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+    <string name="review">评论</string>
+    <string name="takePhoto">自拍照片</string>
+
+
+    <!--글쓰기-->
+    <string name="write">写作</string>
+    <string name="writer">评人:</string>
+    <string name="title">商户名:</string>
+    <string name="restaurant">点名:</string>
+    <string name="address">地址:</string>
+    <string name="contact">电话:</string>
+    <string name="tagSelection">选择标签:</string>
+    <string name="tags">标签:</string>
+    <string name="stars">Tags:</string>
+    <string name="selectedPhoto">选完照片:</string>
+    <string name="takeNewPhoto">拍照</string>
+    <string name="choosePhoto">选择</string>
+
+
+    <!--태그-->
+    <string name="restaurantType">餐厅分类:</string>
+    <string name="brands">#团购</string>
+    <string name="personal">#个人</string>
+    <string name="high_end_restaurant">#酒店式/餐厅</string>
+    <string name="cafe">#咖啡</string>
+    <string name="buffet">#自助餐</string>
+    <string name="bar">#酒店</string>
+    <string name="foodType">料理分类:</string>
+    <string name="korean">#韩式</string>
+    <string name="western">#西餐</string>
+    <string name="japanese">#日本</string>
+    <string name="fusion">#其他</string>
+    <string name="chinese">#中式</string>
+    <string name="asian">#亚洲</string>
+    <string name="desert">#甜点</string>
+    <string name="taste">口味:</string>
+    <string name="delicious">#好吃</string>
+    <string name="notDelicious">#不好吃</string>
+    <string name="atmosphere">#气氛:</string>
+    <string name="good">#不错</string>
+    <string name="normal">#正常</string>
+    <string name="bad">#不好</string>
+    <string name="cleaness">环境:</string>
+    <string name="clean">#干净</string>
+    <string name="dirty">#很脏</string>
+    <string name="service">服务:</string>
+    <string name="kind">#好</string>
+    <string name="rude">#不好</string>
+    <string name="expensive">#贵</string>
+    <string name="cheap">#便宜</string>
+
+
+
+    <!---->
+
+</resources>
