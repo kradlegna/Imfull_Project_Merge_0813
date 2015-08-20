@@ -74,18 +74,27 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
                 ArrayList<String> list2 = new ArrayList<String>();
                 ArrayList<String> list3 = new ArrayList<String>();
 
+                JSONObject content=jsonObject.getJSONObject("content");
+                list1.add(content.getString("writer"));
+                list1.add(content.getString("title"));
+                list1.add(content.getString("shopName"));
+                list1.add(content.getString("address"));
+                list1.add(content.getString("phone"));
+                list1.add(content.getString("star"));
+                list1.add(content.getString("hit"));
+
+                JSONArray tag=jsonObject.getJSONArray("tag");
+                for(int i=0;i<tag.length();i++){
+                    list2.add((String)tag.get(i));
+                }
+
+                JSONArray photo=jsonObject.getJSONArray("photo");
+                for(int i=0;i<tag.length();i++){
+                    list3.add((String)tag.get(i));
+                }
                 list.add(list1);
                 list.add(list2);
                 list.add(list3);
-
-                JSONArray array = (JSONArray) jsonObject.get("data");
-
-                for (int i = 0; i < array.length(); i++) {
-                    for (int a = 0; a < array.getJSONArray(i).length(); a++) {
-                        list.get(i).add((String) (array.getJSONArray(i).get(a)));
-                    }
-
-                }
             }else{
                 Toast.makeText(activity,"서버와의 연결이 고르지 않습니다.",Toast.LENGTH_SHORT).show();
             }
@@ -100,7 +109,7 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
     private String downloadUrl(String myurl,String idx) throws IOException {
         InputStream is = null;
         try {
-            URL url = new URL(myurl+"?idx="+"3");//+idx);
+            URL url = new URL(myurl+"?app_board_id="+"3");//+idx);
             Log.d(TAG, "downloadUrl : " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

@@ -26,7 +26,7 @@ import imageList.ImageViewURL;
  */
 public class DetailActivity extends BaseActivity implements View.OnClickListener {
 
-    public String url = "http://52.69.226.147:8080/app/selectOne";
+    public String url = "http://192.168.0.18:8080/app/selectOne";
 
     String[] contents = new String[7];
     //0=writer
@@ -167,53 +167,53 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             TextView newText = new TextView(this);
             newText.setLayoutParams(params);
             String tag = null;
-            if (tagList.get(i) == "1") {
+            if (tagList.get(i).equals("1")) {
                 newText.setText(R.string.brands);
-            } else if (tagList.get(i) == "2") {
+            } else if (tagList.get(i).equals("2")) {
                 newText.setText(R.string.personal);
-            } else if (tagList.get(i) == "3") {
+            } else if (tagList.get(i).equals("3")) {
                 newText.setText(R.string.high_end_restaurant);
-            } else if (tagList.get(i) == "4") {
+            } else if (tagList.get(i).equals("4")) {
                 newText.setText(R.string.cafe);
-            } else if (tagList.get(i) == "5") {
+            } else if (tagList.get(i).equals("5")) {
                 newText.setText(R.string.buffet);
-            } else if (tagList.get(i) == "6") {
+            } else if (tagList.get(i).equals("6")) {
                 newText.setText(R.string.bar);
-            } else if (tagList.get(i) == "7") {
+            } else if (tagList.get(i).equals("7")) {
                 newText.setText(R.string.korean);
-            } else if (tagList.get(i) == "8") {
+            } else if (tagList.get(i).equals("8")) {
                 newText.setText(R.string.western);
-            } else if (tagList.get(i) == "9") {
+            } else if (tagList.get(i).equals("9")) {
                 newText.setText(R.string.japanese);
-            } else if (tagList.get(i) == "10") {
+            } else if (tagList.get(i).equals("10")) {
                 newText.setText(R.string.fusion);
-            } else if (tagList.get(i) == "11") {
+            } else if (tagList.get(i).equals("11")) {
                 newText.setText(R.string.chinese);
-            } else if (tagList.get(i) == "12") {
+            } else if (tagList.get(i).equals("12")) {
                 newText.setText(R.string.asian);
-            } else if (tagList.get(i) == "13") {
+            } else if (tagList.get(i).equals("13")) {
                 newText.setText(R.string.desert);
-            } else if (tagList.get(i) == "14") {
+            } else if (tagList.get(i).equals("14")) {
                 newText.setText(R.string.delicious);
-            } else if (tagList.get(i) == "15") {
+            } else if (tagList.get(i).equals("15")) {
                 newText.setText(R.string.notDelicious);
-            } else if (tagList.get(i) == "16") {
+            } else if (tagList.get(i).equals("16")) {
                 newText.setText(R.string.good);
-            } else if (tagList.get(i) == "17") {
+            } else if (tagList.get(i).equals("17")) {
                 newText.setText(R.string.bad);
-            } else if (tagList.get(i) == "18") {
+            } else if (tagList.get(i).equals("18")) {
                 newText.setText(R.string.clean);
-            } else if (tagList.get(i) == "19") {
+            } else if (tagList.get(i).equals("19")) {
                 newText.setText(R.string.dirty);
-            } else if (tagList.get(i) == "20") {
+            } else if (tagList.get(i).equals("20")) {
                 newText.setText(R.string.kind);
-            } else if (tagList.get(i) == "21") {
+            } else if (tagList.get(i).equals("21")) {
                 newText.setText(R.string.rude);
-            } else if (tagList.get(i) == "22") {
+            } else if (tagList.get(i).equals("22")) {
                 newText.setText(R.string.expensive);
-            } else if (tagList.get(i) == "23") {
+            } else if (tagList.get(i).equals("23")) {
                 newText.setText(R.string.cheap);
-            } else if (tagList.get(i) == "24") {
+            } else if (tagList.get(i).equals("24")) {
                 newText.setText(R.string.brands);
             } else {
                 //만약 새로운 태그가 추가됬을 경우 어떻게 해야하나.
@@ -227,6 +227,10 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     //사진 넣기
     public void setPhotos(ArrayList<String> photoList) {
+        for(int i=0;i<photoList.size();i++){
+            Log.d("DETAILACTIVITY", photoList.get(i));
+        }
+
 
         Toast.makeText(this, "그림 집어오는 중", Toast.LENGTH_SHORT).show();
         ImageViewURL imageViewURL1 = (ImageViewURL) findViewById(R.id.firstImage);
