@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import imageList.ImageListAdapter;
 import imfull.com.imfull_project.MainActivity;
 
-public class MyAsync extends AsyncTask<String, Void, String> {
+public class ListAsync extends AsyncTask<String, Void, String> {
     String TAG;
     ImageListAdapter adapter;
     MainActivity activity;
 
-    public MyAsync(MainActivity activity, ImageListAdapter adapter) {
+    public ListAsync(MainActivity activity, ImageListAdapter adapter) {
         this.activity   = activity;
         this.adapter    = adapter;
         this.TAG        = this.getClass().getName();

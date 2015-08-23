@@ -48,51 +48,69 @@
 
                 <TextView
                     android:id="@+id/category_franchise"
+                    android:tag="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#프랜차이즈"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick"/>
 
                 <TextView
                     android:id="@+id/category_self_employed"
+                    android:tag="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#개인"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/category_restourant"
+                    android:tag="3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#레스토랑"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/category_buffet"
+                    android:tag="4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#뷔페"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/category_cafe"
+                    android:tag="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#카페"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/category_bar"
+                    android:tag="6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#술집/바"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
 
             </common.FlowLayout>
@@ -123,59 +141,80 @@
 
                 <TextView
                     android:id="@+id/korean_food"
+                    android:tag="7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#한식"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/western_food"
+                    android:tag="8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#양식"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/japanese_food"
+                    android:tag="9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#일식"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
-                    android:id="@+id/chinese_food"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10px"
-                    android:text="#중식"
-                    android:textColor="#FF808080" />
-
-                <TextView
-                    android:id="@+id/fusion"
+                    android:id="@+id/fusion_food"
+                    android:tag="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#퓨전"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
+
+                <TextView
+                    android:id="@+id/chinese_food"
+                    android:tag="11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#중식"
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/asia_food"
+                    android:tag="12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#아시아"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/desert"
+                    android:tag="13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#디저트"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
 
             </common.FlowLayout>
@@ -206,19 +245,25 @@
 
                 <TextView
                     android:id="@+id/taste_delicious"
+                    android:tag="14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#맛있음"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/taste_awfull"
+                    android:tag="15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#맛없음"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
 
             </common.FlowLayout>
@@ -249,27 +294,25 @@
 
                 <TextView
                     android:id="@+id/mood_good"
+                    android:tag="16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#좋음"
-                    android:textColor="#FF808080" />
-
-                <TextView
-                    android:id="@+id/mood_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10px"
-                    android:text="#보통"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/mood_bad"
+                    android:tag="17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#안좋음"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
 
             </common.FlowLayout>
@@ -300,19 +343,25 @@
 
                 <TextView
                     android:id="@+id/cleanliness_good"
+                    android:tag="18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#깨끗함"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/cleanliness_bad"
+                    android:tag="19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#더러움"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
 
             </common.FlowLayout>
@@ -343,35 +392,47 @@
 
                 <TextView
                     android:id="@+id/service_kind"
+                    android:tag="20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#친절함"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/service_unkind"
+                    android:tag="21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#불친절함"
-                    android:textColor="#FF808080" />
-
-                <TextView
-                    android:id="@+id/service_cheap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10px"
-                    android:text="#싸다"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
                 <TextView
                     android:id="@+id/service_expensive"
+                    android:tag="22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
                     android:text="#비싸다"
-                    android:textColor="#FF808080" />
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
+
+                <TextView
+                    android:id="@+id/service_cheap"
+                    android:tag="23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="#싸다"
+                    android:textColor="#FF808080"
+                    android:clickable="true"
+                    android:onClick="tagClick" />
 
             </common.FlowLayout>
 
@@ -385,6 +446,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
         <Button
+            android:id="@+id/bt_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FF650205"

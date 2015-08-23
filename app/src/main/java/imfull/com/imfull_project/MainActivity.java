@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
@@ -22,18 +21,22 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import anim_menu.CloseAnimation;
 import anim_menu.ExpandAnimation;
 import common.BaseActivity;
 import common.Imfull;
-import common.MyAsync;
+import common.ListAsync;
 import imageList.ImageListAdapter;
 
-
+/**
+ * Created by LeeAh
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     MainActivity                    activity;
     ImageButton                     bt_write,bt_search, bt_menu;
@@ -47,8 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-//  public              String       url        = "http://192.168.0.11:8080";                   // +++ leeah 변경
-    public              String       url        = "http://192.168.0.241:8080";
+    public              String       url        = "http://192.168.0.31:8080";
+//  public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
     ListView                         list;
@@ -58,6 +61,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public static int                requestPage  = 1;
     public static boolean            nextDataFlag = true;
 
+    ArrayList                        tagList;               // 검색화면(SearchActivity) 에서 선택된 값
+    HashMap                          tagMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +84,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         imfullList = new ArrayList<Imfull>();
         adapter = new ImageListAdapter(this, imfullList);
         list.setAdapter(adapter);
-        checkNetwork();
+        checkNetwork(false);
 
 
         /* -----------------------------------------------------------------------------------------
@@ -112,7 +117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                         && list.getLastVisiblePosition() == list.getAdapter().getCount() - 1
                         && list.getChildAt(list.getChildCount() - 1).getBottom() <= list.getHeight()) {
                     Log.d("++++++ scroll", "end");
-                    checkNetwork();
+                    checkNetwork(false);
                 }
             }
 
@@ -128,7 +133,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
     /*
-        Setting UI  Method
+     *  Setting UI  Method
      */
     public void init(){
 
@@ -176,7 +181,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
     /*
-        Active Menu(Slide Menu)  Method
+     *  Active Menu(Slide Menu)  Method
      */
     public void activeMenu(){
         if (!isLeftExpanded) {
@@ -188,12 +193,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             new ExpandAnimation(slidingPanel, panelWidth, "left",
                     Animation.RELATIVE_TO_SELF, 0.0f,
                     Animation.RELATIVE_TO_SELF, 0.75f, 0, 0.0f, 0, 0.0f);
-
-            // disable all of main view
-            // LinearLayout viewGroup = (LinearLayout) findViewById(
-            FrameLayout viewGroup = (FrameLayout) findViewById(R.id.ll_fragment)
-                    .getParent();
-            enableDisableViewGroup(viewGroup, false);
 
             // enable empty view
             ((LinearLayout) findViewById(R.id.ll_empty))
@@ -217,11 +216,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     TranslateAnimation.RELATIVE_TO_SELF, 0.75f,
                     TranslateAnimation.RELATIVE_TO_SELF, 0.0f, 0, 0.0f, 0, 0.0f);
 
-            // enable all of main view
-            // LinearLayout viewGroup = (LinearLayout) findViewById(
-            FrameLayout viewGroup = (FrameLayout) findViewById(R.id.ll_fragment)
-                    .getParent();
-            enableDisableViewGroup(viewGroup, true);
 
             // disable empty view
             ((LinearLayout) findViewById(R.id.ll_empty))
@@ -231,31 +225,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
-    /*
-         뷰의 동작을 제어한다. 하위 모든 뷰들이 enable 값으로 설정된다.
-     */
-    public static void enableDisableViewGroup(ViewGroup viewGroup,
-                                              boolean enabled) {
-/*
-        int childCount = viewGroup.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View view = viewGroup.getChildAt(i);
-
-            if (view.getId() != R.id.bt_left) {
-                view.setEnabled(enabled);
-                if (view instanceof ViewGroup) {
-                    enableDisableViewGroup((ViewGroup) view, enabled);
-                }
-            }
-        }
-*/
-    } 
-
-
-
 
     /*
-        Move Detail Activity  Method
+     *  상세 화면 이동  Method
      */
     public void moveDetail(int appBoardId){
         Intent intent = new Intent(this, DetailActivity.class);
@@ -264,19 +236,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
+
     /*
-        Move Search Activity  Method
+     *  검색 화면 이동  Method
      */
     public void moveSearch(){
         Intent intent = new Intent();
         intent.setClass(this, SearchActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
         overridePendingTransition(R.anim.top_to_visible, R.anim.top_to_invisible);
     }
 
 
+
     /*
-        Move Wirte Activity  Method
+     *  글쓰기 화면 이동  Method
      */
     public void moveWrite() {
         Intent intent = new Intent();
@@ -287,10 +261,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
+
     /*
-        OnClick Method
+     *  클리 이벤트 처리  Method
      */
-    @Override
     public void onClick(View v) {
         switch( v.getId() ){
             case R.id.bt_menu:
@@ -307,11 +281,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
-    /**
-     *  하드웨어 Back key 이벤트시 종료 처리
-     */
-    @Override
 
+    /*
+     *  하드웨어 Back key 이벤트시 종료 처리  Method
+     */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
             new AlertDialog.Builder(this)
@@ -329,11 +302,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         return false;
     }
 
-    /*-------------------------------------------------------------------
-      네트워크의 상태확인한다
-      왜?? 네트워크 상태가 유효할때만 데이터를 가져올 수 있으므로.
-  -------------------------------------------------------------------*/
-    public void checkNetwork(){
+
+
+    /*
+     *  네트워크 상태 확인  Method
+     */
+    public void checkNetwork(boolean _searchList){
         if( !nextDataFlag ) {
             Toast.makeText(this, "마지막 데이터 입니다.", Toast.LENGTH_SHORT).show();
             return;
@@ -345,16 +319,55 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(this, "네트워크 상태 유효함", Toast.LENGTH_SHORT).show();
-            /*웹서버에 연동 시작*/
-            MyAsync myAsync = new MyAsync(this, adapter);
-            // execute
-            Log.d(TAG, "myAsync.execute");
-//            myAsync.execute( url + "/app/list" );                         // +++ leeah 변경
-            myAsync.execute( url + "/app/list?reqPage=" + requestPage );
+            Log.d(TAG, "네트워크 상태 유효함");
+/*
+            String param = "";
+
+            if( _searchList ){
+                param        = "&tagList=[]";
+                adapter.setData(null);
+                param = "&tagList=" + (tagList.toString());
+            }else{
+                param = "&tagList=[]";
+            }
+*/
+            ListAsync listAsync = new ListAsync(this, adapter);
+//            listAsync.execute( url + "/app/list?reqPage=" + requestPage + param);
+            listAsync.execute( url + "/app/list?reqPage=" + requestPage);
+
         } else {
             Toast.makeText(this, "네트워크 상태 문제가 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
+
+
+    /*
+     *  액티비티 파라미터 확인  Method
+     *      - 태그검색 화면(SearchActivity.java)에서 넘어왔을 경우 처리
+     */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Bundle b    = data.getExtras();
+        tagList     = (ArrayList) b.get("tagList");
+        tagMap      = (HashMap) b.get("tagMap");
+        requestPage = 1;
+
+        // UI 처리 (검색 내용 표시 영역)
+        LinearLayout layout_tagList = (LinearLayout) findViewById(R.id.layout_tagList);
+        if( tagList.size() != 0 ){
+            layout_tagList.setVisibility(View.VISIBLE);
+            TextView txt_tagList = (TextView) findViewById(R.id.txt_tagList);
+            String txtTags       = "";
+
+            for( int i = 0; i < tagList.size(); i++ ){
+                txtTags += tagMap.get(tagList.get(i)) + "  ";
+            }
+
+            txt_tagList.setText(txtTags);
+        }else{
+            layout_tagList.setVisibility(View.GONE);
+        }
+
+//        checkNetwork(true);
+    }
 }
