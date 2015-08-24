@@ -14,20 +14,24 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import common.AndroidUploader;
 import common.FlowLayout;
 import common.ImageSelectHelperActivity;
 
-public class WriteActivity extends ImageSelectHelperActivity implements View.OnClickListener {
+public class WriteActivity extends ImageSelectHelperActivity implements View.OnClickListener, View.OnFocusChangeListener {
     final int REQ_CODE_SELECT_IMAGE = 100;
 
     //1.글쓴이 제목 상호명 주소 연락처 별점
-    String[] contents = new String[6];
+    EditText[] contents = new EditText[6];
     //2.태그
     String[] tags = new String[6];
     //3. resizedPictures<<사진실제 경로 담겨있는 ArrayList
@@ -101,10 +105,15 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         uploader = new AndroidUploader(url);
 
         writer = (EditText) findViewById(R.id.writer);
+        writer.setOnFocusChangeListener(this);
         title = (EditText) findViewById(R.id.title);
+        title.setOnFocusChangeListener(this);
         shopName = (EditText) findViewById(R.id.shopName);
+        shopName.setOnFocusChangeListener(this);
         address = (EditText) findViewById(R.id.address);
+        address.setOnFocusChangeListener(this);
         phone = (EditText) findViewById(R.id.phone);
+        phone.setOnFocusChangeListener(this);
 
         checkTags.add(category_franchise = (TextView) findViewById(R.id.category_franchise));
         checkTags.add(category_self_employed = (TextView) findViewById(R.id.category_self_employed));
@@ -145,12 +154,14 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
             stars.get(i).setOnClickListener(this);
         }
 
+
+
         sendContent = (Button) findViewById(R.id.sendContent);
         sendContent.setOnClickListener(this);
         //mPhotoImageView = (ImageView) findViewById(R.id.image);
         flow_layout8 = (FlowLayout) findViewById(R.id.flow_layout8);
 
-        contents[5]="3";
+        contents[5].setText("3");
 
 
 
@@ -435,23 +446,23 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
                 break;
             case R.id.star1:
                 changeStar(0);
-                contents[5] = "1";
+                contents[5].setText("1");
                 break;
             case R.id.star2:
                 changeStar(1);
-                contents[5] = "2";
+                contents[5].setText("2");
                 break;
             case R.id.star3:
                 changeStar(2);
-                contents[5] = "3";
+                contents[5].setText("3");
                 break;
             case R.id.star4:
                 changeStar(3);
-                contents[5] = "4";
+                contents[5].setText("4");
                 break;
             case R.id.star5:
                 changeStar(4);
-                contents[5] = "5";
+                contents[5].setText("5");
                 break;
             case R.id.bt_back:
                 goBack();
@@ -651,15 +662,16 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
 
     public boolean makeList() {
 
-        contents[0] = writer.getText().toString();
-        contents[1] = title.getText().toString();
-        contents[2] = shopName.getText().toString();
-        contents[3] = address.getText().toString();
-        contents[4] = phone.getText().toString();
+        contents[0] = writer;
+        contents[1] = title;
+        contents[2] = shopName;
+        contents[3] = address;
+        contents[4] = phone;
+
 
         for (int i = 0; i < 6; i++) {
-            if ((contents[i] == null) || (tags[i] == null)) {
-                showAlert("아직 작성하지 않으신 항목이 있습니다.");
+            if ((contents[i].getText().toString() == null) || (tags[i] == null) || !checkText(contents[i]) ) {
+                showAlert("아직 작성하지 않으신 항목이나 잘못된항목이 있습니다.");
                 return false;
             }
         }
@@ -678,7 +690,7 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         ArrayList<String> list1 = new ArrayList<String>();
         for (int i = 0; i < contents.length; i++) {
             if (contents[i] != null) {
-                list1.add(contents[i]);
+                list1.add(contents[i].getText().toString());
             } else {
                 return list = null;
             }
@@ -734,4 +746,93 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         }
     }
 
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+
+        switch(v.getId()){
+            case R.id.writer:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.title:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.shopName:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.address:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.phone:if(!hasFocus){checkPhone();};break;
+        }
+
+    }
+
+    public Boolean checkText(EditText txt){
+        String name=txt.getText().toString();
+        Pattern patternName= Pattern.compile("[0-9a-zA-Z-\\s가-힣u4e00-u9fa5]{1,50}$");
+        //2~50 숫자 영문 소문 대문  한글 공백 허용 한자?
+        Matcher matcherName=patternName.matcher(name);
+        boolean flagName=matcherName.matches();
+        if(!flagName){
+            Toast.makeText(this,R.string.wrongText,Toast.LENGTH_LONG).show();
+        }
+        return flagName;
+
+    }
+    public Boolean checkPhone(){
+        String number=phone.getText().toString();
+        Pattern patternName=Pattern.compile("^[0-9-]{1,16}$");
+        //9~15 숫자만 허용가능
+        Matcher matcherName=patternName.matcher(number);
+        boolean flagName=matcherName.matches();
+        if(!flagName){
+            Toast.makeText(this,R.string.wrongText,Toast.LENGTH_LONG).show();
+
+        }
+        return flagName;
+    }
+//    public void checkContent(EditText txt) {
+//        if (txt != phone) {
+//            if (!checkText(txt)) {
+//                if (writer.isFocused()) {
+//                    if (checkText(writer)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (title.isFocused()) {
+//                    if (checkText(title)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (shopName.isFocused()) {
+//                    if (checkText(shopName)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (address.isFocused()) {
+//                    if (checkText(address)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (phone.isFocused()) {
+//                    if (checkPhone()) {
+//                        txt.requestFocus();
+//                    }
+//                }
+//            }
+//        }else{
+//            if (!checkPhone()) {
+//                if (writer.isFocused()) {
+//                    if (checkText(writer)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (title.isFocused()) {
+//                    if (checkText(title)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (shopName.isFocused()) {
+//                    if (checkText(shopName)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (address.isFocused()) {
+//                    if (checkText(address)) {
+//                        txt.requestFocus();
+//                    }
+//                } else if (phone.isFocused()) {
+//                    if (checkPhone()) {
+//                        txt.requestFocus();
+//                    }
+//                }
+//            }
+//
+//        }
+//    }
 }

@@ -33,7 +33,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFFFF"
-                    android:id="@+id/writer" />
+                    android:id="@+id/writer"
+                    android:layout_marginLeft="10dp"
+                    android:hint="@string/moreThanTwo"/>
 
 
             </LinearLayout>
@@ -58,7 +60,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFFFF"
-                    android:id="@+id/title" />
+                    android:id="@+id/title"
+                    android:layout_marginLeft="10dp"/>
 
 
             </LinearLayout>
@@ -84,7 +87,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFFFF"
-                    android:id="@+id/shopName" />
+                    android:id="@+id/shopName"
+                    android:layout_marginLeft="10dp"/>
 
 
             </LinearLayout>
@@ -110,7 +114,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFFFF"
-                    android:id="@+id/address" />
+                    android:id="@+id/address"
+                    android:layout_marginLeft="10dp"/>
 
 
             </LinearLayout>
@@ -136,7 +141,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFFFF"
-                    android:id="@+id/phone" />
+                    android:id="@+id/phone"
+                    android:hint="ex) 02-5555-0000"
+                    android:layout_marginLeft="10dp"/>
 
 
             </LinearLayout>

@@ -14,7 +14,8 @@
     <string name="cancel">取消</string>
     <string name="review">评论</string>
     <string name="takePhoto">自拍照片</string>
-
+    <string name="moreThanTwo">Please write moreThan Two letters</string>
+    <string name="wrongText">There is wrong characters in text box </string>
 
     <!--글쓰기-->
     <string name="write">写作</string>
@@ -22,7 +23,7 @@
     <string name="title">商户名:</string>
     <string name="restaurant">点名:</string>
     <string name="address">地址:</string>
-    <string name="contact">电话:</string>
+    <string name="contact">商户 电话:</string>
     <string name="tagSelection">选择标签:</string>
     <string name="tags">标签:</string>
     <string name="stars">Tags:</string>
