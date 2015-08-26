@@ -47,6 +47,11 @@ public class ImageListAdapter extends BaseAdapter {
     }
 
 
+    public void removeData(){
+        this.data.removeAll(this.data);
+    }
+
+
     public int getCount() {
         return data.size();
     }

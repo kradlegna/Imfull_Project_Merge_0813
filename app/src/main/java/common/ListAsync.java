@@ -64,6 +64,14 @@ public class ListAsync extends AsyncTask<String, Void, String> {
         try {
             JSONObject jsonObject = new JSONObject(s);
 
+            // 새로운 요청시 adapter 초기화 처리 (일반 리스트 요청 에서 태그 검색 리스트일 경우, 초기화 처리)
+            boolean    resetFlag  = (Boolean) jsonObject.get("resetFlag");
+            if( resetFlag ){
+                adapter.removeData();
+            }
+            Log.d("+++++ : " + TAG ,  "resetFlag : " + resetFlag);
+
+
             Log.d("+++++ : " + TAG ,  "s : " + s);
             activity.nextDataFlag = (Boolean) jsonObject.get("nextFlag");
             activity.requestPage  = (Integer) jsonObject.get("nextPage");

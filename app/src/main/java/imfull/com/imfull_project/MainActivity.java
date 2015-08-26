@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-    public              String       url        = "http://192.168.0.31:8080";
+    public              String       url        = "http://192.168.1.123:8080";
 //  public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
@@ -308,10 +308,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
      *  네트워크 상태 확인  Method
      */
     public void checkNetwork(boolean _searchList){
-        if( !nextDataFlag ) {
-            Toast.makeText(this, "마지막 데이터 입니다.", Toast.LENGTH_SHORT).show();
+
+        if( !nextDataFlag && !_searchList ) {
+//            Toast.makeText(this, "마지막 데이터 입니다.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        Log.d(TAG,"**********************************");
 
         Log.d(TAG,"checkNetwork");
         ConnectivityManager connMgr = null;
@@ -333,7 +336,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 */
             ListAsync listAsync = new ListAsync(this, adapter);
 //            listAsync.execute( url + "/app/list?reqPage=" + requestPage + param);
-            listAsync.execute( url + "/app/list?reqPage=" + requestPage);
+
+            if( _searchList ){
+                String tagParam = "";
+
+                for( int i = 0; i < tagList.size(); i++ ){
+                    tagParam += tagList.get(i);
+                    if( i < tagList.size()-1 ){
+                        tagParam += ",";
+                    }
+                }
+
+
+
+                // 태그 검색
+                listAsync.execute( url + "/app/listTag?tagList=" + tagParam);
+            }else{
+                // 리스트 검색
+                listAsync.execute( url + "/app/list?reqPage=" + requestPage);
+            }
 
         } else {
             Toast.makeText(this, "네트워크 상태 문제가 있습니다.", Toast.LENGTH_SHORT).show();
@@ -353,11 +374,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         requestPage = 1;
 
         // UI 처리 (검색 내용 표시 영역)
+        String txtTags       = "";
         LinearLayout layout_tagList = (LinearLayout) findViewById(R.id.layout_tagList);
         if( tagList.size() != 0 ){
             layout_tagList.setVisibility(View.VISIBLE);
             TextView txt_tagList = (TextView) findViewById(R.id.txt_tagList);
-            String txtTags       = "";
 
             for( int i = 0; i < tagList.size(); i++ ){
                 txtTags += tagMap.get(tagList.get(i)) + "  ";
@@ -368,6 +389,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             layout_tagList.setVisibility(View.GONE);
         }
 
-//        checkNetwork(true);
+        if( txtTags == "" ){
+            // 선택된 태그가 없을 경우 전체 리스트 요청
+            checkNetwork(false);
+        }else{
+            checkNetwork(true);
+        }
     }
 }
