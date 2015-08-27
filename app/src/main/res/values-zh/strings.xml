@@ -14,8 +14,15 @@
     <string name="cancel">取消</string>
     <string name="review">评论</string>
     <string name="takePhoto">自拍照片</string>
-    <string name="moreThanTwo">Please write moreThan Two letters</string>
-    <string name="wrongText">There is wrong characters in text box </string>
+    <string name="moreThanTwo">작성하지 않으신 항목이 있습니다</string>
+    <string name="selectPhoto">사진을 선택하여 주십시오</string>
+
+    <string name="wrongWriter">There is wrong characters in text box </string>
+    <string name="wrongTitle">There is wrong characters in text box </string>
+    <string name="wrongShopName">There is wrong characters in text box </string>
+    <string name="wrongAddress">There is wrong characters in text box </string>
+    <string name="wrongPhone">There is wrong characters in text box </string>
+    <string name="connectionIsBad">인터넷 연결이 고르지 않습니다</string>
 
     <!--글쓰기-->
     <string name="write">写作</string>

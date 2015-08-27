@@ -14,7 +14,16 @@
     <string name="cancel">Cancel</string>
     <string name="review">Review</string>
     <string name="takePhoto">Photo</string>
-    <string name="moreThanTwo">Please write more Than Two letters</string>
+    <string name="moreThanTwo">There is a section that you missed</string>
+    <string name="selectPhoto">Please choose photos at least one</string>
+
+    <string name="wrongWriter">There is wrong characters in writer box </string>
+    <string name="wrongTitle">The title has invalid characters</string>
+    <string name="wrongShopName">Please write the shop name </string>
+    <string name="wrongAddress">Address is invalid</string>
+    <string name="wrongPhone">Please use numbers</string>
+    <string name="connectionIsBad">인터넷 연결이 고르지 않습니다</string>
+
 
     <!--글쓰기-->
     <string name="write">Write</string>
@@ -29,7 +38,7 @@
     <string name="selectedPhoto">Selected photo:</string>
     <string name="takeNewPhoto">Take photo</string>
     <string name="choosePhoto">Choose photo</string>
-    <string name="wrongText">There is wrong characters in text box </string>
+
 
     <!--태그-->
     <string name="restaurantType">Restaurant type:</string>

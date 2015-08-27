@@ -14,7 +14,15 @@
     <string name="cancel">취소</string>
     <string name="review">후기</string>
     <string name="takePhoto">직찍</string>
-    <string name="moreThanTwo">최소 한글자 이상의 내용을 기입해주세요</string>
+    <string name="moreThanTwo">작성하지 않으신 항목이 있습니다</string>
+    <string name="selectPhoto">사진을 선택하여 주십시오</string>
+
+    <string name="wrongWriter">작성자 이름을 두글자이상 기입하여 주세요</string>
+    <string name="wrongTitle">제목을 작성하여 주세요</string>
+    <string name="wrongShopName">상호명이 잘못되었습니다</string>
+    <string name="wrongAddress">가게 주소를 기입하여 주십시오</string>
+    <string name="wrongPhone">전화번호가 잘못되었습니다</string>
+    <string name="connectionIsBad">인터넷 연결이 고르지 않습니다</string>
 
 
     <!--글쓰기-->
@@ -30,7 +38,7 @@
     <string name="selectedPhoto">선택한 사진:</string>
     <string name="takeNewPhoto">사진 찍기</string>
     <string name="choosePhoto">기존 항목 선택</string>
-    <string name="wrongText">문자를 잘못 입력하셨습니다</string>
+
 
     <!--태그-->
     <string name="restaurantType">레스토랑 종류:</string>

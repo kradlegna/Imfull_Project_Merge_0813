@@ -26,7 +26,7 @@ import imageList.ImageViewURL;
  */
 public class DetailActivity extends BaseActivity implements View.OnClickListener {
 
-    public String url = "http://192.168.0.18:8080/app/selectOne";
+    public String url = "http://192.168.0.31:8080/app/selectOne";
 
     String[] contents = new String[7];
     //0=writer
@@ -86,6 +86,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     }
 
     public void selectOne(List<ArrayList<String>> list) {
+
         if (list != null) {
             if (list.get(0) != null && list.get(1) != null && list.get(2) != null) {
                 setText(list.get(0));
@@ -232,7 +233,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         }
 
 
-        Toast.makeText(this, "그림 집어오는 중", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "그림 집어오는 중", Toast.LENGTH_SHORT).show();
         ImageViewURL imageViewURL1 = (ImageViewURL) findViewById(R.id.firstImage);
         imageViewURL1.setImageFromURL(photoList.get(0));
 

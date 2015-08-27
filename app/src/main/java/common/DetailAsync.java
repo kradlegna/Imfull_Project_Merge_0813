@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import imfull.com.imfull_project.DetailActivity;
+import imfull.com.imfull_project.R;
 
 public class DetailAsync extends AsyncTask<String, Void, String> {
     String TAG;
@@ -96,7 +97,7 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
                 list.add(list2);
                 list.add(list3);
             }else{
-                Toast.makeText(activity,"서버와의 연결이 고르지 않습니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.getString(R.string.connectionIsBad),Toast.LENGTH_SHORT).show();
             }
         }
         catch (JSONException e) { e.printStackTrace(); }
@@ -109,7 +110,7 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
     private String downloadUrl(String myurl,String idx) throws IOException {
         InputStream is = null;
         try {
-            URL url = new URL(myurl+"?app_board_id="+"3");//+idx);
+            URL url = new URL(myurl+"?app_board_id="+"16");//+idx);
             Log.d(TAG, "downloadUrl : " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

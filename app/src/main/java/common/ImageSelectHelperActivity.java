@@ -212,7 +212,7 @@ public class ImageSelectHelperActivity extends BaseActivity {
 		if (!path.exists()) {
 			path.mkdirs();
 		}
-		File file = new File(path, resizedPictures.size()+".png");
+		File file = new File(path,resizedPictures.size()+".png");
 		return file;
 	}
 
@@ -538,7 +538,6 @@ public class ImageSelectHelperActivity extends BaseActivity {
 	}
 
 	protected MyImageView makeImage(){
-
 
 		MyImageView mPhotoImageView = new MyImageView(getBaseContext());
 		mPhotoImageView.setOnClickListener(new View.OnClickListener() {
