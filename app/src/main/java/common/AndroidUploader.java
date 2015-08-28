@@ -45,12 +45,16 @@ public class AndroidUploader {
         return null;
     }
 
-    private void writeFormField(String fieldName, String fieldValue) {
+    private void writeFormField(String fieldName, Object fieldValue, boolean isString) {
         try {
             dataStream.writeBytes(twoHyphens + boundary + CRLF);
             dataStream.writeBytes("Content-Disposition: form-data; name=\"" + fieldName + "\"" + CRLF);
             dataStream.writeBytes(CRLF);
-            dataStream.writeBytes(fieldValue);
+            if(isString) {
+                dataStream.writeBytes((String)fieldValue);
+            }else{
+                dataStream.writeByte((Integer)fieldValue);
+            }
             dataStream.writeBytes(CRLF);
         } catch (Exception e) {
             //System.out.println("AndroidUploader.writeFormField: got: " + e.getMessage());
@@ -93,7 +97,7 @@ public class AndroidUploader {
             dataStream.writeBytes(CRLF);
         } catch (Exception e) {
             //System.out.println("GeoPictureUploader.writeFormField: got: " + e.getMessage());
-            Log.d(TAG, "AndroidUploader.writeFormField: got: " + e.getMessage());
+            Log.d(TAG, "AndroidUploader.writeFileField: got: " + e.getMessage());
         }
     }
 
@@ -117,6 +121,7 @@ public class AndroidUploader {
                 conn.setRequestMethod("POST");
                 //conn.setRequestProperty("User-Agent", "myFileUploader");
                 conn.setRequestProperty("Connection", "Keep-Alive");
+                //conn.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
                 conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
                 conn.connect();
                 dataStream = new DataOutputStream(conn.getOutputStream());
@@ -146,32 +151,54 @@ public class AndroidUploader {
         }
 
         private void setData(List<ArrayList<String>> list) throws IOException {
-            setTextForm(list.get(0) );
+            Log.d("AndroidUploader-tag", "" + list.size());
+            setTextForm(list.get(0));
             setTagForm(list.get(1));
             setFileForm(list.get(2));
         }
         private void setTextForm(ArrayList<String> textData) {
-            writeFormField("writer", textData.get(0));
-            writeFormField("title", textData.get(1));
+            writeFormField("writer", textData.get(0),true);
+            Log.d("AndroidUploader", textData.get(0));
+            writeFormField("title", textData.get(1),true);
+            Log.d("AndroidUploader", textData.get(1));
+            writeFormField("shopName", textData.get(2),true);
+            Log.d("AndroidUploader", textData.get(2));
+            writeFormField("address", textData.get(3),true);
+            Log.d("AndroidUploader", textData.get(3));
+            writeFormField("phone", textData.get(4),true);
+            Log.d("AndroidUploader", textData.get(4));
+            writeFormField("star", textData.get(5),true);
+            Log.d("AndroidUploader", textData.get(5));
         }
         private void setTagForm(ArrayList<String> tagData) {
             for (int i = 0; i < tagData.size(); i++) {
-                writeFormField("tag", tagData.get(i));
-            }
-        }
+                writeFormField("tag", tagData.get(i),true);
+                Log.d("AndroidUploader-tag", tagData.get(i));
+    }
+}
         private void setFileForm(ArrayList<String> filePath) throws IOException {
+            for(int i=0;i<filePath.size();i++){
+                Log.d("AndroidUploader-photo", filePath.get(i));
+            }
+
             FileInputStream fileInputStream = null;
             for (int i = 0; i < filePath.size(); i++) {
                 Log.d(TAG, "filePath : " + filePath.get(i) );
+
                 File uploadFile = new File(filePath.get(i));
-                fileInputStream = new FileInputStream( uploadFile );
+                Log.d("AndroidUploader-photo", "파일 겟 "+uploadFile.exists());
+                fileInputStream = new FileInputStream(uploadFile);
+                Log.d("AndroidUploader-photo", "스트림 겟");
                 writeFileField("image", filePath.get(i), "image/jpg", fileInputStream);
-            }
-            dataStream.writeBytes( twoHyphens + boundary + twoHyphens + CRLF );
+                Log.d("AndroidUploader-photo", "파일 전송");
+           }
+            Log.d("DataStream",dataStream+"");
+            dataStream.writeBytes(twoHyphens + boundary + twoHyphens + CRLF);
             fileInputStream.close();
             dataStream.flush();
             dataStream.close();
             dataStream = null;
+            Log.d("AndroidUploader-photo", "스트림 종료");
         }
         private String getResponse(HttpURLConnection conn) {
             try {

@@ -6,26 +6,34 @@
     <!--안내문 ect.-->
     <string name="count">浏览: </string>
     <string name="chooseTags">请选择所有相搜索的</string>
-    <string name="cancelWritingTitle">Cancle Writing</string>
-    <string name="cancelWriting">Are you gonna go back to list page?\n(All that you wrote will disapper)</string>
+    <string name="cancelWritingTitle">取消点评</string>
+    <string name="cancelWriting">确认要回到列表吗？\n(您的修改尚未提交)</string>
     <string name="serch">搜索</string>
-    <string name="searchedTags">搜索的标签:</string>
     <string name="ok">确认</string>
+    <string name="searchedTags">搜索的标签:</string>
     <string name="cancel">取消</string>
     <string name="review">评论</string>
     <string name="takePhoto">自拍照片</string>
+    <string name="moreThanTwo">请完成点评</string>
+    <string name="selectPhoto">请选择照片</string>
 
+    <string name="wrongWriter">请确认您输入的评人</string>
+    <string name="wrongTitle">请确认您输入的题目</string>
+    <string name="wrongShopName">请确认您输入的店名</string>
+    <string name="wrongAddress">请确认您输入的地址</string>
+    <string name="wrongPhone">请确认您输入的电话号码</string>
+    <string name="connectionIsBad">网络繁忙，请稍候再试</string>
 
     <!--글쓰기-->
-    <string name="write">写作</string>
+    <string name="write">写点评</string>
     <string name="writer">评人:</string>
-    <string name="title">商户名:</string>
-    <string name="restaurant">点名:</string>
+    <string name="title">题目:</string>
+    <string name="restaurant">店名:</string>
     <string name="address">地址:</string>
     <string name="contact">电话:</string>
     <string name="tagSelection">选择标签:</string>
     <string name="tags">标签:</string>
-    <string name="stars">Tags:</string>
+    <string name="stars">总体评价:</string>
     <string name="selectedPhoto">选完照片:</string>
     <string name="takeNewPhoto">拍照</string>
     <string name="choosePhoto">选择</string>

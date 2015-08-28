@@ -15,15 +15,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import common.AndroidUploader;
 import common.FlowLayout;
 import common.ImageSelectHelperActivity;
 
-public class WriteActivity extends ImageSelectHelperActivity implements View.OnClickListener {
+public class WriteActivity extends ImageSelectHelperActivity implements View.OnClickListener, View.OnFocusChangeListener {
     final int REQ_CODE_SELECT_IMAGE = 100;
 
     //1.글쓴이 제목 상호명 주소 연락처 별점
@@ -101,10 +105,15 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         uploader = new AndroidUploader(url);
 
         writer = (EditText) findViewById(R.id.writer);
+        writer.setOnFocusChangeListener(this);
         title = (EditText) findViewById(R.id.title);
+        title.setOnFocusChangeListener(this);
         shopName = (EditText) findViewById(R.id.shopName);
+        shopName.setOnFocusChangeListener(this);
         address = (EditText) findViewById(R.id.address);
+        address.setOnFocusChangeListener(this);
         phone = (EditText) findViewById(R.id.phone);
+        phone.setOnFocusChangeListener(this);
 
         checkTags.add(category_franchise = (TextView) findViewById(R.id.category_franchise));
         checkTags.add(category_self_employed = (TextView) findViewById(R.id.category_self_employed));
@@ -144,6 +153,8 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         for (int i = 0; i < stars.size(); i++) {
             stars.get(i).setOnClickListener(this);
         }
+
+
 
         sendContent = (Button) findViewById(R.id.sendContent);
         sendContent.setOnClickListener(this);
@@ -435,23 +446,23 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
                 break;
             case R.id.star1:
                 changeStar(0);
-                contents[5] = "1";
+                contents[5]="1";
                 break;
             case R.id.star2:
                 changeStar(1);
-                contents[5] = "2";
+                contents[5]="2";
                 break;
             case R.id.star3:
                 changeStar(2);
-                contents[5] = "3";
+                contents[5]="3";
                 break;
             case R.id.star4:
                 changeStar(3);
-                contents[5] = "4";
+                contents[5]="4";
                 break;
             case R.id.star5:
                 changeStar(4);
-                contents[5] = "5";
+                contents[5]="5";
                 break;
             case R.id.bt_back:
                 goBack();
@@ -651,21 +662,34 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
 
     public boolean makeList() {
 
+        EditText[] txt=new EditText[5];
+        txt[0]=writer ;
+        txt[1]=title ;
+        txt[2]=shopName ;
+        txt[3]=address ;
+        txt[4]=phone ;
         contents[0] = writer.getText().toString();
         contents[1] = title.getText().toString();
         contents[2] = shopName.getText().toString();
         contents[3] = address.getText().toString();
         contents[4] = phone.getText().toString();
 
+        for (int i = 0; i < txt.length; i++) {
+            if (!checkText(txt[i])) {
+                txt[i].requestFocus();
+                return false;
+            }
+        }
+
         for (int i = 0; i < 6; i++) {
             if ((contents[i] == null) || (tags[i] == null)) {
-                showAlert("아직 작성하지 않으신 항목이 있습니다.");
+                showAlert(getString(R.string.moreThanTwo));
                 return false;
             }
         }
 
         if (resizedPictures.size() == 0) {
-            showAlert("최소 한개의 사진을 선택하여 주시기 바랍니다.");
+            showAlert(getString(R.string.selectPhoto));
             return false;
         }
 
@@ -714,13 +738,12 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
 
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         deletePicture();
     }
 
     protected void deletePicture() {
-        super.onStop();
         File f = null;
         if (resizedPictures.size() > 0) {
             for (int i = 0; i < resizedPictures.size(); i++) {
@@ -733,5 +756,90 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
             }
         }
     }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+
+        switch(v.getId()){
+            case R.id.writer:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.title:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.shopName:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.address:if(!hasFocus){checkText((EditText) v);};break;
+            case R.id.phone:if(!hasFocus){checkPhone();};break;
+        }
+
+    }
+
+    public Boolean checkText(EditText txt){
+
+        String name=txt.getText().toString();
+
+        Pattern patternName= Pattern.compile("[0-9a-zA-Z-\\s가-힣u4e00-u9fa5]{1,50}$");
+        //2~50 숫자 영문 소문 대문  한글 공백 허용 한자?
+        Matcher matcherName=patternName.matcher(name);
+        boolean flagName=matcherName.matches();
+        if(!flagName){
+            if(txt==writer) {
+                txt.setError(getString(R.string.wrongWriter));
+            }else if(txt==title){
+                txt.setError(getString(R.string.wrongTitle));
+            }else if(txt==shopName){
+                txt.setError(getString(R.string.wrongShopName));
+            }else if(txt==address){
+                txt.setError(getString(R.string.wrongAddress));
+            }
+        }
+        filterText("?",txt);
+        return flagName;
+
+    }
+    public Boolean checkPhone(){
+        String number=phone.getText().toString();
+        Pattern patternName=Pattern.compile("^[0-9-]{1,16}$");
+        //9~15 숫자만 허용가능
+        Matcher matcherName=patternName.matcher(number);
+        boolean flagName=matcherName.matches();
+        if(!flagName){
+            phone.setError(getString(R.string.wrongPhone));
+        }
+        return flagName;
+    }
+
+    /**
+     * 금지어 필터링하기
+     *
+     * @author   Sehwan Noh <sehnoh at java2go.net>
+     * @version  1.0 - 2006. 08. 22
+     * @since    JDK 1.4
+     */
+
+        public void filterText(String sText,EditText txt) {
+            Pattern p = Pattern.compile("fuck|shit|개새끼", Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(txt.getText().toString());
+
+            StringBuffer sb = new StringBuffer();
+            while (m.find()) {
+                //System.out.println(m.group());
+                m.appendReplacement(sb, maskWord(m.group()));
+            }
+            m.appendTail(sb);
+
+            //System.out.println(sb.toString());
+            txt.setText(sb);
+            //return sb.toString();
+        }
+
+        public String maskWord(String word) {
+            StringBuffer buff = new StringBuffer();
+            char[] ch = word.toCharArray();
+            for (int i = 0; i < ch.length; i++) {
+                if (i < 1) {
+                    buff.append(ch[i]);
+                } else {
+                    buff.append("*");
+                }
+            }
+            return buff.toString();
+        }
 
 }

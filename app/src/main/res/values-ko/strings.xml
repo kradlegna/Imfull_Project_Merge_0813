@@ -14,10 +14,19 @@
     <string name="cancel">취소</string>
     <string name="review">후기</string>
     <string name="takePhoto">직찍</string>
+    <string name="moreThanTwo">작성하지 않으신 항목이 있습니다</string>
+    <string name="selectPhoto">사진을 선택해 주세요</string>
+
+    <string name="wrongWriter">작성자를 확인해 주세요</string>
+    <string name="wrongTitle">제목을 확인해 주세요요</string>
+    <string name="wrongShopName">상호명을  확인해 주세요</string>
+    <string name="wrongAddress">주소를 확인해 주세요</string>
+    <string name="wrongPhone">연락처를 확인해 주세요</string>
+    <string name="connectionIsBad">연결이 불안정합니다, 다시 시도해 주세요</string>
 
 
     <!--글쓰기-->
-    <string name="write">새글쓰기</string>
+    <string name="write">글쓰기</string>
     <string name="writer">글쓴이:</string>
     <string name="title">제목:</string>
     <string name="restaurant">상호명:</string>
@@ -25,7 +34,7 @@
     <string name="contact">연락처:</string>
     <string name="tagSelection">태그선택:</string>
     <string name="tags">태그:</string>
-    <string name="stars">제점수는요:</string>
+    <string name="stars">별점:</string>
     <string name="selectedPhoto">선택한 사진:</string>
     <string name="takeNewPhoto">사진 찍기</string>
     <string name="choosePhoto">기존 항목 선택</string>
