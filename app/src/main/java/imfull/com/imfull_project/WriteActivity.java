@@ -502,7 +502,7 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
                 if (makeList()) {
                     Toast.makeText(this,"전송시도했음",Toast.LENGTH_SHORT).show();
                     AndroidUploader.ReturnCode result = uploader.uploadForm(doUpload());
-                    if (result.equals("http201")) {
+                    if (result.equals("http200")) {
                         deletePicture();
                         finish();
                     } else {

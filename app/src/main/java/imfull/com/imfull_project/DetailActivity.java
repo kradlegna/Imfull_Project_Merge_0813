@@ -63,7 +63,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         count = (TextView) findViewById(R.id.count);
 
 
-        String idx = getIntent().getStringExtra("idx");
+        String idx = getIntent().getStringExtra("app_board_id");
         DetailAsync async = new DetailAsync(this);
         async.execute(url, idx);
 

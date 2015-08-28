@@ -50,8 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-    public              String       url        = "http://192.168.1.66:8080";
-//  public              String       url        = "http://52.69.226.147:8080";
+//    public              String       url        = "http://192.168.1.69:8080";
+    public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
     ListView                         list;
