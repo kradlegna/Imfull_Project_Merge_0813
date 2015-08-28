@@ -71,7 +71,8 @@ public class ImageListAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.list_row, null);
 
         ImageViewURL list_image  = (ImageViewURL) vi.findViewById(R.id.list_image);     // thumb image
-        TextView title           = (TextView)     vi.findViewById(R.id.txt_title);       // title
+        TextView txt_title       = (TextView)     vi.findViewById(R.id.txt_title);       // title
+        TextView txt_hit         = (TextView)     vi.findViewById(R.id.txt_hit);       // title
         LinearLayout layout_star = (LinearLayout) vi.findViewById(R.id.layout_star);
         layout_star.removeAllViews();
 
@@ -80,7 +81,8 @@ public class ImageListAdapter extends BaseAdapter {
         dto        = data.get(position);
 
         // Setting all values in listview
-        title.setText(dto.getApp_board_title());
+        txt_title.setText(dto.getApp_board_title());
+        txt_hit.setText("조회수 " + dto.getApp_board_hit());
 //        imageLoader.DisplayImage(R.drawable.food1, thumb_image);
         Log.d(TAG, "URL : " + dto.getApp_picture_name());
 
