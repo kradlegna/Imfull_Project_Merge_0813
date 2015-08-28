@@ -501,14 +501,13 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
             case R.id.sendContent:
                 if (makeList()) {
                     Toast.makeText(this,"전송시도했음",Toast.LENGTH_SHORT).show();
-                    uploader.uploadForm(doUpload());
-//                    AndroidUploader.ReturnCode result = uploader.uploadForm(doUpload());
-//                    if (result.equals("http201")) {
-//                        //deletePicture();
-//                        //finish();
-//                    } else {
-//                        showAlert("오류코드 : " + result + "가 발생하였습니다." + "\n" + "문제가 계속된다면 홈페이지에 문의 주세요");
-//                    }
+                    AndroidUploader.ReturnCode result = uploader.uploadForm(doUpload());
+                    if (result.equals("http201")) {
+                        deletePicture();
+                        finish();
+                    } else {
+                        showAlert("오류코드 : " + result + "가 발생하였습니다." + "\n" + "문제가 계속된다면 홈페이지에 문의 주세요");
+                    }
                 }
 
 
