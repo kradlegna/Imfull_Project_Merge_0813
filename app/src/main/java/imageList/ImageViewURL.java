@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class ImageViewURL extends ImageView {
         protected Bitmap doInBackground(String... params) {
             Bitmap bitmap = null;
             try {
+                Log.d("사진 url 확인", params[0].toString());
                 url = new URL(params[0]);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);

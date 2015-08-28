@@ -31,7 +31,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:scaleType="fitEnd"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        android:padding="5dp"/>
 
 
     <ImageButton
@@ -42,7 +43,8 @@
         android:layout_alignParentLeft="true"
         android:background="@null"
         android:src="@drawable/icon1"
-        android:scaleType="fitStart"/>
+        android:scaleType="fitStart"
+        android:padding="18dp"/>
 
 
 

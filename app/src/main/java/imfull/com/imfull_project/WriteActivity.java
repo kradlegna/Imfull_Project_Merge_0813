@@ -81,7 +81,7 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
     ImageButton addPicture;
 
     AndroidUploader uploader;
-    String url = "http://192.168.0.31:8080/app/write";
+    String url = "http://52.69.226.147:8080/app/write";
 
 
 /*

@@ -351,7 +351,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             // execute
             Log.d(TAG, "myAsync.execute");
 //            myAsync.execute( url + "/app/list" );                         // +++ leeah 변경
-            //myAsync.execute( url + "/app/list?reqPage=" + requestPage );
+            myAsync.execute( url + "/app/list?reqPage=" + requestPage );
         } else {
             Toast.makeText(this, "네트워크 상태 문제가 있습니다.", Toast.LENGTH_SHORT).show();
         }

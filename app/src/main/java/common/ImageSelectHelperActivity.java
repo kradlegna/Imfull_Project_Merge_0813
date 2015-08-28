@@ -556,7 +556,7 @@ public class ImageSelectHelperActivity extends BaseActivity {
 		//Matrix m = new Matrix();
 		//m.postTranslate(0,0);    // 이미지뷰에 등록할 비트맵의 초기위치.
 		//mPhotoImageView.setImageMatrix(m);       // 매트릭스를 이미지뷰에 적용한다.
-		mPhotoImageView.setBackgroundColor(Color.BLUE);
+		mPhotoImageView.setBackgroundColor(Color.WHITE);
 		flow_layout8.addView(mPhotoImageView);      // 레이아웃에 이미지뷰를 등록한다.
 
 

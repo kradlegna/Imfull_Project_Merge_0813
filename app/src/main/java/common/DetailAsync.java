@@ -90,8 +90,9 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
                 }
 
                 JSONArray photo=jsonObject.getJSONArray("photo");
-                for(int i=0;i<tag.length();i++){
-                    list3.add((String)tag.get(i));
+                for(int i=0;i<photo.length();i++){
+                    list3.add((String)photo.get(i));
+
                 }
                 list.add(list1);
                 list.add(list2);
@@ -110,7 +111,7 @@ public class DetailAsync extends AsyncTask<String, Void, String> {
     private String downloadUrl(String myurl,String idx) throws IOException {
         InputStream is = null;
         try {
-            URL url = new URL(myurl+"?app_board_id="+"16");//+idx);
+            URL url = new URL(myurl+"?app_board_id="+idx);//+idx);
             Log.d(TAG, "downloadUrl : " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

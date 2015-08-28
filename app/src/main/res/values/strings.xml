@@ -6,23 +6,23 @@
     <!--안내문 ect.-->
     <string name="count">views: </string>
     <string name="chooseTags">please select the tags to search!</string>
-    <string name="cancelWritingTitle">Cancle Writing</string>
-    <string name="cancelWriting">Are you gonna go back to list page?\n(All that you wrote will disapper)</string>
+    <string name="cancelWritingTitle">Cancel Writing</string>
+    <string name="cancelWriting">Do you want to go back to LIst page? \n(All that you wrote will disapper)</string>
     <string name="serch">search</string>
     <string name="searchedTags">searched tags:</string>
     <string name="ok">Okay</string>
     <string name="cancel">Cancel</string>
     <string name="review">Review</string>
     <string name="takePhoto">Photo</string>
-    <string name="moreThanTwo">There is a section that you missed</string>
-    <string name="selectPhoto">Please choose photos at least one</string>
+    <string name="moreThanTwo">There is a section unfinished</string>
+    <string name="selectPhoto">Please select photo</string>
 
-    <string name="wrongWriter">There is wrong characters in writer box </string>
-    <string name="wrongTitle">The title has invalid characters</string>
-    <string name="wrongShopName">Please write the shop name </string>
-    <string name="wrongAddress">Address is invalid</string>
-    <string name="wrongPhone">Please use numbers</string>
-    <string name="connectionIsBad">인터넷 연결이 고르지 않습니다</string>
+    <string name="wrongWriter">Invalid Writer</string>
+    <string name="wrongTitle">Invalid Title</string>
+    <string name="wrongShopName">Invalid ShopName</string>
+    <string name="wrongAddress">Invalid Address</string>
+    <string name="wrongPhone">Invalid number</string>
+    <string name="connectionIsBad">connection problem caused, please try again</string>
 
 
     <!--글쓰기-->
