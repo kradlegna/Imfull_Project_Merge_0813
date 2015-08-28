@@ -80,23 +80,23 @@
                     android:onClick="tagClick" />
 
                 <TextView
-                    android:id="@+id/category_buffet"
+                    android:id="@+id/category_cafe"
                     android:tag="4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
-                    android:text="#뷔페"
+                    android:text="#카페"
                     android:textColor="#FF808080"
                     android:clickable="true"
                     android:onClick="tagClick" />
 
                 <TextView
-                    android:id="@+id/category_cafe"
+                    android:id="@+id/category_buffet"
                     android:tag="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10px"
-                    android:text="#카페"
+                    android:text="#뷔페"
                     android:textColor="#FF808080"
                     android:clickable="true"
                     android:onClick="tagClick" />
