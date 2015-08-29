@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.util.ArrayList;
 
 import common.Imfull;
@@ -26,14 +29,12 @@ public class ImageListAdapter extends BaseAdapter {
     private MainActivity activity;
     private ArrayList<Imfull> data;
     private static LayoutInflater inflater = null;
-    private ImageViewURL imageViewURL;
     private String TAG;
 
     public ImageListAdapter(MainActivity a, ArrayList<Imfull> d) {
         activity = a;
         data = d;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        imageViewURL = (ImageViewURL) activity.findViewById(R.id.list_image);
         this.TAG = this.getClass().getName();
     }
 
@@ -70,12 +71,12 @@ public class ImageListAdapter extends BaseAdapter {
         if (convertView == null)
             vi = inflater.inflate(R.layout.list_row, null);
 
-        ImageViewURL list_image  = (ImageViewURL) vi.findViewById(R.id.list_image);     // thumb image
-        TextView txt_title       = (TextView)     vi.findViewById(R.id.txt_title);       // title
-        TextView txt_hit         = (TextView)     vi.findViewById(R.id.txt_hit);       // title
+        ImageView    list_image  = (ImageView)    vi.findViewById(R.id.list_image);
+        TextView     txt_title   = (TextView)     vi.findViewById(R.id.txt_title);
+        TextView     txt_hit     = (TextView)     vi.findViewById(R.id.txt_hit);
         LinearLayout layout_star = (LinearLayout) vi.findViewById(R.id.layout_star);
-        layout_star.removeAllViews();
 
+        layout_star.removeAllViews();
 
         Imfull dto = null;
         dto        = data.get(position);
@@ -83,11 +84,16 @@ public class ImageListAdapter extends BaseAdapter {
         // Setting all values in listview
         txt_title.setText(dto.getApp_board_title());
         txt_hit.setText("조회수 " + dto.getApp_board_hit());
-//        imageLoader.DisplayImage(R.drawable.food1, thumb_image);
-        Log.d(TAG, "URL : " + dto.getApp_picture_name());
 
         String url = dto.getApp_picture_name();
-        list_image.setImageFromURL( url );
+
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                                            .cacheInMemory(true)
+                                            .resetViewBeforeLoading(true)
+                                            .build();
+
+        imageLoader.displayImage(url, list_image, options);
 
         // Set Star layout
 //        int grade = Integer.parseInt(list.get(activity.KEY_GRADE));

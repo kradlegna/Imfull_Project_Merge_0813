@@ -50,8 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-//    public              String       url        = "http://192.168.1.69:8080";
-    public              String       url        = "http://52.69.226.147:8080";
+    public              String       url        = "http://192.168.0.34:8080";
+//    public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
     ListView                         list;
@@ -373,6 +373,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tagMap      = (HashMap) b.get("tagMap");
         requestPage = 1;
 
+        list.setSelectionFromTop(0, 0);
+
         // UI 처리 (검색 내용 표시 영역)
         String txtTags       = "";
         LinearLayout layout_tagList = (LinearLayout) findViewById(R.id.layout_tagList);
@@ -395,5 +397,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }else{
             checkNetwork(true);
         }
+
     }
 }
