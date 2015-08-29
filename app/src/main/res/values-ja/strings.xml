@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">imfull</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!--안내문 ect.-->
+    <string name="count">ヒット: </string>
+    <string name="chooseTags">検索したいテーグを全部選んでください!</string>
+    <string name="cancelWritingTitle">作成取り消し</string>
+    <string name="cancelWriting">元に戻りますか?\n(書いた物が全部消されます)</string>
+    <string name="serch">検索する</string>
+    <string name="searchedTags">検索したテーグ:</string>
+    <string name="ok">確認</string>
+    <string name="cancel">取り消し</string>
+    <string name="review">感想</string>
+    <string name="takePhoto">写真</string>
+    <string name="moreThanTwo">まだ残ってる項目があります</string>
+    <string name="selectPhoto">写真を選んでください</string>
+
+
+    <string name="wrongWriter">二文字以上書いてください</string>
+    <string name="wrongTitle">タイトルを作成してください</string>
+    <string name="wrongShopName">店の名前が間違ってます</string>
+    <string name="wrongAddress">住所を正しく書いてください</string>
+    <string name="wrongPhone">電話番号で使うことができません</string>
+    <string name="connectionIsBad">ネット繋がりが不良です</string>
+
+
+    <!--글쓰기-->
+    <string name="write">新しい文書</string>
+    <string name="writer">作成者:</string>
+    <string name="title">タイトル:</string>
+    <string name="restaurant">店の名前:</string>
+    <string name="address">住所:</string>
+    <string name="contact">店の連絡先:</string>
+    <string name="tagSelection">テーグ選択:</string>
+    <string name="tags">テーグ:</string>
+    <string name="stars">点数:</string>
+    <string name="selectedPhoto">選んだ写真:</string>
+    <string name="takeNewPhoto">写真撮り</string>
+    <string name="choosePhoto">前の写真選択</string>
+
+
+    <!--태그-->
+    <string name="restaurantType">店のタイプ:</string>
+    <string name="brands">#プレンチャイズ</string>
+    <string name="personal">#自営業</string>
+    <string name="high_end_restaurant">#レストラン</string>
+    <string name="cafe">#カフェー</string>
+    <string name="buffet">#バイキング</string>
+    <string name="bar">#居酒屋</string>
+    <string name="foodType">種類:</string>
+    <string name="korean">#韓国料理</string>
+    <string name="western">#洋食</string>
+    <string name="japanese">#和食</string>
+    <string name="fusion"># フュージョン</string>
+    <string name="chinese">#中華料理</string>
+
+    <string name="asian">#アジア</string>
+    <string name="desert">#デザート</string>
+    <string name="taste">味:</string>
+    <string name="delicious">#美味しい</string>
+    <string name="notDelicious">#不味い</string>
+    <string name="atmosphere">#雰囲気:</string>
+    <string name="good">#良い</string>
+    <string name="normal">#普通</string>
+    <string name="bad">#悪い</string>
+
+    <string name="cleaness">清潔度:</string>
+    <string name="clean">#綺麗</string>
+    <string name="dirty">#キタない</string>
+    <string name="service">サビス:</string>
+    <string name="kind">#親切</string>
+    <string name="rude">#不親切</string>
+    <string name="expensive">#高い</string>
+    <string name="cheap">#やすい</string>
+
+
+
+    <!---->
+
+</resources>
