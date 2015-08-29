@@ -2,19 +2,24 @@
 package imfull.com.imfull_project;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import common.BaseActivity;
+
 /**
  * Created by LeeAh
  */
-public class SearchActivity extends Activity{
+public class SearchActivity extends BaseActivity {
     ArrayList<Integer>       tagList   = new ArrayList<Integer>();
     HashMap<Integer, String> tagMap    = new HashMap<Integer, String>();
 
@@ -80,5 +85,17 @@ public class SearchActivity extends Activity{
             default:
         }
     }
+
+
+    /*
+     *  하드웨어 Back key 이벤트  Method
+     */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            closeActivity(false);
+        }
+        return false;
+    }
+
 
 }
