@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#650205"
     android:orientation="vertical">
 
 
@@ -31,7 +31,7 @@
         android:id="@+id/slidingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffffff"
+        android:background="#650205"
         android:gravity="left"
         android:orientation="vertical">
 
