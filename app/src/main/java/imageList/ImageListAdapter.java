@@ -29,12 +29,16 @@ public class ImageListAdapter extends BaseAdapter {
     private MainActivity activity;
     private ArrayList<Imfull> data;
     private static LayoutInflater inflater = null;
+
+    private ImageViewURL imageViewURL;      // image async
+
     private String TAG;
 
     public ImageListAdapter(MainActivity a, ArrayList<Imfull> d) {
         activity = a;
         data = d;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        imageViewURL = (ImageViewURL) activity.findViewById(R.id.list_image); // image async
         this.TAG = this.getClass().getName();
     }
 
@@ -71,7 +75,9 @@ public class ImageListAdapter extends BaseAdapter {
         if (convertView == null)
             vi = inflater.inflate(R.layout.list_row, null);
 
-        ImageView    list_image  = (ImageView)    vi.findViewById(R.id.list_image);
+//        ImageView    list_image  = (ImageView)    vi.findViewById(R.id.list_image);
+        ImageViewURL    list_image  = (ImageViewURL)    vi.findViewById(R.id.list_image);
+
         TextView     txt_title   = (TextView)     vi.findViewById(R.id.txt_title);
         TextView     txt_hit     = (TextView)     vi.findViewById(R.id.txt_hit);
         LinearLayout layout_star = (LinearLayout) vi.findViewById(R.id.layout_star);
@@ -86,15 +92,26 @@ public class ImageListAdapter extends BaseAdapter {
         txt_hit.setText("조회수 " + dto.getApp_board_hit());
 
         String url = dto.getApp_picture_name();
-
+//*/
         ImageLoader imageLoader = ImageLoader.getInstance();
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                                            .cacheInMemory(true)
-                                            .resetViewBeforeLoading(true)
-                                            .build();
+//        DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                                            .cacheInMemory(true)
+//                                            .resetViewBeforeLoading(true)
+//                                            .build();
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                .cacheOnDisc(true).resetViewBeforeLoading(true)
+                .showImageForEmptyUri(R.drawable.food1)
+                .showImageOnFail(R.drawable.food1)
+                .showImageOnLoading(R.drawable.food1).build();
+
 
         imageLoader.displayImage(url, list_image, options);
+/*/
 
+        list_image.setImageFromURL(url);
+
+//*/
         // Set Star layout
 //        int grade = Integer.parseInt(list.get(activity.KEY_GRADE));
         int grades = Integer.parseInt("3");

@@ -39,6 +39,7 @@ public class ListAsync extends AsyncTask<String, Void, String> {
     /*가변형 인자란?  호출자가 인수의 갯수를 결정할 수 있는 매개변수의
     정의 기법, 즉 매개변수의 갯수는 호출시 결정된다!!*/
     protected String doInBackground(String... params) {
+        Log.d(TAG, "=========== doInBackground : " );
         String data = null;
         try {
             Log.d(TAG,"doInBackground, params[0] : " + params[0]);
@@ -71,7 +72,6 @@ public class ListAsync extends AsyncTask<String, Void, String> {
             }
             Log.d("+++++ : " + TAG ,  "resetFlag : " + resetFlag);
 
-
             Log.d("+++++ : " + TAG ,  "s : " + s);
             activity.nextDataFlag = (Boolean) jsonObject.get("nextFlag");
             activity.requestPage  = (Integer) jsonObject.get("nextPage");
@@ -90,6 +90,9 @@ public class ListAsync extends AsyncTask<String, Void, String> {
                 dto.setApp_board_writer(obj.getString("app_board_writer"));
                 dto.setApp_board_hit(obj.getInt("app_board_hit"));
                 dto.setApp_picture_name(obj.getString("app_picture_name"));
+
+
+                Log.d(TAG, "-------- id : " + obj.getInt("app_board_id"));
 
 //                list.add(dto);
                 adapter.setData(dto);

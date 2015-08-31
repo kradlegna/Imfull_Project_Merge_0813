@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-    public              String       url        = "http://192.168.0.34:8080";
+    public              String       url        = "http://192.168.0.51:8080";
 //    public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
@@ -61,8 +61,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public static int                requestPage  = 1;
     public static boolean            nextDataFlag = true;
 
-    ArrayList                        tagList;               // 검색화면(SearchActivity) 에서 선택된 값
+    ArrayList                        tagList;                           // 검색화면(SearchActivity) 에서 선택된 값
     HashMap                          tagMap;
+
+    String                           prevScroll = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,18 +114,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
+                //*/
                 if (list != null && list.getAdapter() != null
                         && list.getChildAt(list.getChildCount() - 1) != null
                         && list.getLastVisiblePosition() == list.getAdapter().getCount() - 1
                         && list.getChildAt(list.getChildCount() - 1).getBottom() <= list.getHeight()) {
+
+                    prevScroll = "end";
+
                     Log.d("++++++ scroll", "end");
-                    checkNetwork(false);
+                    Log.d("++++++ prevScroll", prevScroll);
+//                    checkNetwork(false);
                 }
+                /*/
+                lastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
+                //*/
             }
 
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Log.d("++++++ prevScroll", "prevScroll : " + prevScroll);
+                if( prevScroll.equals("end") ){
+                    checkNetwork(false);
+                }
+                prevScroll = "ing";
+
                 Log.d("++++++ scroll", "ing");
+//                Log.d("++++++ prevScroll", prevScroll);
+//                if(scrollState == this.SCROLL_STATE_IDLE && lastItemVisibleFlag) {
+//                    Log.d("++++++ scroll", "-------- end");
+//                    checkNetwork(false);
+//                }
             }
 
         });
@@ -314,7 +335,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             return;
         }
 
-        Log.d(TAG,"**********************************");
 
         Log.d(TAG,"checkNetwork");
         ConnectivityManager connMgr = null;
@@ -323,19 +343,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         if (networkInfo != null && networkInfo.isConnected()) {
             Log.d(TAG, "네트워크 상태 유효함");
-/*
-            String param = "";
 
-            if( _searchList ){
-                param        = "&tagList=[]";
-                adapter.setData(null);
-                param = "&tagList=" + (tagList.toString());
-            }else{
-                param = "&tagList=[]";
-            }
-*/
             ListAsync listAsync = new ListAsync(this, adapter);
-//            listAsync.execute( url + "/app/list?reqPage=" + requestPage + param);
+            Log.d(TAG, "네트워크 상태 유효함");
+
+            String urlValue = "";
 
             if( _searchList ){
                 String tagParam = "";
@@ -346,15 +358,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                         tagParam += ",";
                     }
                 }
-
-
-
                 // 태그 검색
-                listAsync.execute( url + "/app/listTag?tagList=" + tagParam);
+                urlValue = url + "/app/listTag?tagList=" + tagParam;
             }else{
                 // 리스트 검색
-                listAsync.execute( url + "/app/list?reqPage=" + requestPage);
+                urlValue = url + "/app/list?reqPage=" + requestPage;
             }
+
+            Log.d(TAG, "---- urlValue :  " + urlValue);
+            listAsync.execute(urlValue);
 
         } else {
             Toast.makeText(this, "네트워크 상태 문제가 있습니다.", Toast.LENGTH_SHORT).show();
