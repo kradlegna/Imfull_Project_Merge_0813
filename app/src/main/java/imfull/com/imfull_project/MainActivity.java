@@ -50,8 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FrameLayout.LayoutParams        slidingPanelParameters;
     FrameLayout.LayoutParams        leftMenuPanelParameters;
 
-    public              String       url        = "http://192.168.0.51:8080";
-//    public              String       url        = "http://52.69.226.147:8080";
+//    public              String       url        = "http://192.168.0.51:8080";
+    public              String       url        = "http://52.69.226.147:8080";
     private             String       TAG;
 
     ListView                         list;
@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         ----------------------------------------------------------------------------------------- */
 
         // Getting adapter by passing xml data ArrayList
-        Log.d("########[imfull]", "imfullList : " + imfullList.size());
+//        Log.d("########[imfull]", "imfullList : " + imfullList.size());
 
         // Click event for single list row
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -121,10 +121,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                         && list.getChildAt(list.getChildCount() - 1).getBottom() <= list.getHeight()) {
 
                     prevScroll = "end";
-
-                    Log.d("++++++ scroll", "end");
-                    Log.d("++++++ prevScroll", prevScroll);
-//                    checkNetwork(false);
                 }
                 /*/
                 lastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
@@ -133,18 +129,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-                Log.d("++++++ prevScroll", "prevScroll : " + prevScroll);
                 if( prevScroll.equals("end") ){
                     checkNetwork(false);
                 }
                 prevScroll = "ing";
-
-                Log.d("++++++ scroll", "ing");
-//                Log.d("++++++ prevScroll", prevScroll);
-//                if(scrollState == this.SCROLL_STATE_IDLE && lastItemVisibleFlag) {
-//                    Log.d("++++++ scroll", "-------- end");
-//                    checkNetwork(false);
-//                }
             }
 
         });
@@ -164,8 +152,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         LayoutInflater mInflater = LayoutInflater.from(this);
 
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-//        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
-//        mTitleTextView.setText("암풀[i'm full]");
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -336,16 +322,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }
 
 
-        Log.d(TAG,"checkNetwork");
+//        Log.d(TAG,"checkNetwork");
         ConnectivityManager connMgr = null;
         connMgr= (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
-            Log.d(TAG, "네트워크 상태 유효함");
+//            Log.d(TAG, "네트워크 상태 유효함");
 
             ListAsync listAsync = new ListAsync(this, adapter);
-            Log.d(TAG, "네트워크 상태 유효함");
 
             String urlValue = "";
 

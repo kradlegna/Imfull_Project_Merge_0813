@@ -39,14 +39,14 @@ public class ListAsync extends AsyncTask<String, Void, String> {
     /*가변형 인자란?  호출자가 인수의 갯수를 결정할 수 있는 매개변수의
     정의 기법, 즉 매개변수의 갯수는 호출시 결정된다!!*/
     protected String doInBackground(String... params) {
-        Log.d(TAG, "=========== doInBackground : " );
+//        Log.d(TAG, "=========== doInBackground : " );
         String data = null;
         try {
-            Log.d(TAG,"doInBackground, params[0] : " + params[0]);
+//            Log.d(TAG,"doInBackground, params[0] : " + params[0]);
             data = downloadUrl(params[0]);
             //publishProgress();
         } catch (IOException e) {
-            Log.d(TAG,"downloadUrl IOException");
+//            Log.d(TAG,"downloadUrl IOException");
         }
         return data;
     }
@@ -60,7 +60,7 @@ public class ListAsync extends AsyncTask<String, Void, String> {
     /*쓰레드 수행 후*/
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Log.d(TAG, "onPostExecute : " + s);
+//        Log.d(TAG, "onPostExecute : " + s);
         /* 웹서버로부터 전달받은 데이터를 ListView의 출력해보자!!*/
         try {
             JSONObject jsonObject = new JSONObject(s);
@@ -70,9 +70,9 @@ public class ListAsync extends AsyncTask<String, Void, String> {
             if( resetFlag ){
                 adapter.removeData();
             }
-            Log.d("+++++ : " + TAG ,  "resetFlag : " + resetFlag);
+//            Log.d("+++++ : " + TAG ,  "resetFlag : " + resetFlag);
 
-            Log.d("+++++ : " + TAG ,  "s : " + s);
+//            Log.d("+++++ : " + TAG ,  "s : " + s);
             activity.nextDataFlag = (Boolean) jsonObject.get("nextFlag");
             activity.requestPage  = (Integer) jsonObject.get("nextPage");
 
@@ -91,14 +91,9 @@ public class ListAsync extends AsyncTask<String, Void, String> {
                 dto.setApp_board_hit(obj.getInt("app_board_hit"));
                 dto.setApp_picture_name(obj.getString("app_picture_name"));
 
-
-                Log.d(TAG, "-------- id : " + obj.getInt("app_board_id"));
-
-//                list.add(dto);
                 adapter.setData(dto);
             }
             /*어댑터가 보유한 list와 현재 list를 대체!!*/
-//            adapter.setData(list);
             adapter.notifyDataSetChanged();
         }
         catch (JSONException e) { e.printStackTrace(); }
@@ -110,22 +105,22 @@ public class ListAsync extends AsyncTask<String, Void, String> {
         InputStream is = null;
         try {
             URL url = new URL(myurl);
-            Log.d(TAG, "downloadUrl : " + url);
+//            Log.d(TAG, "downloadUrl : " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            Log.d(TAG, "downloadUrl - conn " + conn);
+//            Log.d(TAG, "downloadUrl - conn " + conn);
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
             // Starts the query
-            Log.d(TAG,"downloadUrl : connect");
-            Log.d(TAG, "downloadUrl - conn : " + conn.getURL() );
+//            Log.d(TAG,"downloadUrl : connect");
+//            Log.d(TAG, "downloadUrl - conn : " + conn.getURL() );
 
             conn.connect();
             int response = conn.getResponseCode();
-            Log.d(TAG, "The response is : " + response);
+//            Log.d(TAG, "The response is : " + response);
 
             is = conn.getInputStream();
 
