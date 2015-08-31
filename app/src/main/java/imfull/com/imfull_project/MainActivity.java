@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ArrayList<Imfull> listData = adapter.getData();
-                moveDetail(listData.get(position).getApp_board_id());
+                //moveDetail(listData.get(position).getApp_board_id());
             }
         });
 

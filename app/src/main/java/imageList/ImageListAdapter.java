@@ -69,7 +69,7 @@ public class ImageListAdapter extends BaseAdapter {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View vi = convertView;
 
         if (convertView == null)
@@ -134,6 +134,7 @@ public class ImageListAdapter extends BaseAdapter {
                 Intent intent = new Intent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.setClass(activity, DetailActivity.class);
+                intent.putExtra("app_board_id", data.get(position).getApp_board_id());
                 activity.startActivity(intent);
             }
         });
