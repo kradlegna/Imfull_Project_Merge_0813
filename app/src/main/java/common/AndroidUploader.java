@@ -154,7 +154,8 @@ public class AndroidUploader {
                 if ( response.contains("uploaded successfully")) { return ReturnCode.http201; }
                 else { return ReturnCode.http401; }
             }
-            return null;
+            activity.finishActivity(true);
+            return ReturnCode.http201;
         }
 
         private void setData(List<ArrayList<String>> list) throws IOException {
@@ -198,7 +199,7 @@ public class AndroidUploader {
                 Log.d("AndroidUploader-photo", "스트림 겟");
                 writeFileField("image", filePath.get(i), "image/jpg", fileInputStream);
                 Log.d("AndroidUploader-photo", "파일 전송");
-           }
+            }
             Log.d("DataStream",dataStream+"");
             dataStream.writeBytes(twoHyphens + boundary + twoHyphens + CRLF);
             fileInputStream.close();
@@ -206,7 +207,7 @@ public class AndroidUploader {
             dataStream.close();
             dataStream = null;
             Log.d("AndroidUploader-photo", "스트림 종료");
-            activity.finishActivity(true);
+
         }
         private String getResponse(HttpURLConnection conn) {
             try {
