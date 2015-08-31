@@ -84,14 +84,6 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
     String url = "http://52.69.226.147:8080/app/write";
 
 
-/*
-    private static final int PICK_FROM_CAMERA = 0;
-    private static final int PICK_FROM_ALBUM = 1;
-    private static final int CROP_FROM_CAMERA = 2;
-
-    private Uri mImageCaptureUri;
-    //private ImageView mPhotoImageView;
-*/
 
     FlowLayout flow_layout8;
 
@@ -102,7 +94,7 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         init();
 
 
-        uploader = new AndroidUploader(url);
+        uploader = new AndroidUploader(url,this);
 
         writer = (EditText) findViewById(R.id.writer);
         writer.setOnFocusChangeListener(this);
@@ -192,91 +184,7 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
 
-//        View camera_inflator = mInflater.inflate(R.layout.layout_camera_button, null);
-//        View gallery_inflator = mInflater.inflate(R.layout.layout_gallery_button, null);
-//        View cancel_inflator = mInflater.inflate(R.layout.layout_cancel_button, null);
-//        photoCamera=(Button)findViewById(R.id.photoButton_camera);
-//        photoGallery=(Button)findViewById(R.id.photoButton_gallery);
-//        photoCancel=(Button)findViewById(R.id.photoButton_cancel);
-//
-//        setCustomButtons(photoGallery,photoCamera,photoCancel);
-
     }
-
-//    public boolean shouldOverrideUrlLoading(String url) {
-//        final String items[] = {"갤러리에서 가져오기","카메라로 촬영하기"};
-//        if (url.startsWith("custom://")) {
-//            new AlertDialog.Builder(this)
-//                    .setIcon(R.drawable.logo)
-//                    .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int item) {
-//                            Toast.makeText(getApplicationContext(), Integer.toString(item), Toast.LENGTH_SHORT).show();
-//                            dialog.dismiss();
-//
-//                            if (item == 0) {
-////갤러리 호출
-//                                Uri uri = Uri.parse("content://media/external/images/media");
-//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                                intent.setType("image/*");
-//                                startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
-//                            } else if (item == 1) {
-////카메라로 찍기
-//                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(intent);
-//                            }
-//                        }
-//                    })
-//                    .show();
-//        }
-//        return true;
-//    }
-//    //////////////////////////// 선택 하면 리턴값 받기
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//        super.onActivityResult(requestCode, resultCode, intent);
-//        try {
-//            if(!intent.getData().equals(null)){
-//                Bitmap selPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), intent.getData());
-//                selPhoto = Bitmap.createScaledBitmap(selPhoto, 100, 100, true);
-////      image_bt.setImageBitmap(selPhoto);//썸네일
-//                Log.e("선택 된 이미지 ", "selPhoto : " + selPhoto);
-//                pictures.add(selPhoto);
-//            }
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-
-    //    public void selectMultiPhoto(){
-//        Integer[] mThumbIds = {
-//                R.drawable.sample_thumb_0, R.drawable.sample_thumb_1,
-//                R.drawable.sample_thumb_2, R.drawable.sample_thumb_3,
-//        };
-//        ImageView imageView[] = new ImageView[mThumbIds.length];
-//        for(int i = 0; i < mThumbIds.length; i++){
-//            imageView[i] = new ImageView(this);
-//            imageView[i].setLayoutParams(new TableLayout.LayoutParams(
-//                    FlowLayout.LayoutParams.WRAP_CONTENT,
-//                    FlowLayout.LayoutParams.WRAP_CONTENT));
-//            imageView[i].setImageResource(mThumbIds[i]);
-//            flow_layout8.addView(imageView[i]);
-//        }
-//        for(int i = 0; i < mThumbIds.length; i++){
-//            imageView[i].setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View v) {
-//                    // 하고싶은처리.....
-//                }
-//            });
-//        }
-//
-//    }
-
     public void changeStar(int num) {
         for (int i = 0; i < stars.size(); i++) {
             if (i <= num) {
@@ -469,45 +377,14 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
                 break;
             case R.id.addPicture:
                 startSelectImage();
-                /*DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        doTakePhotoAction();
-                    }
-                };
 
-                DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        doTakeAlbumAction();
-                    }
-                };
-
-                DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                };
-
-                new android.app.AlertDialog.Builder(this)
-                        .setTitle("업로드할 이미지 선택")
-                        .setPositiveButton("사진촬영", cameraListener)
-                        .setNeutralButton("앨범선택", albumListener)
-                        .setNegativeButton("취소", cancelListener)
-                        .show();
-            */
                 break;
             case R.id.sendContent:
                 if (makeList()) {
                     Toast.makeText(this,"전송시도했음",Toast.LENGTH_SHORT).show();
-                    AndroidUploader.ReturnCode result = uploader.uploadForm(doUpload());
-                    if (result.equals("http200")) {
-                        deletePicture();
-                        finish();
-                    } else {
-                        showAlert("오류코드 : " + result + "가 발생하였습니다." + "\n" + "문제가 계속된다면 홈페이지에 문의 주세요");
-                    }
+
+                    uploader.uploadForm(doUpload());
+
                 }
 
 
@@ -521,121 +398,17 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
 
 }
 
-    /**
-     * 카메라에서 이미지 가져오기
-     *//*
-    private void doTakePhotoAction() {
-    *//*
-     * 참고 해볼곳
-     * http://2009.hfoss.org/Tutorial:Camera_and_Gallery_Demo
-     * http://stackoverflow.com/questions/1050297/how-to-get-the-url-of-the-captured-image
-     * http://www.damonkohler.com/2009/02/android-recipes.html
-     * http://www.firstclown.us/tag/android/
-     *//*
+    public void finishActivity(Boolean test){
 
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // 임시로 사용할 파일의 경로를 생성
-        String url = "tmp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
-        mImageCaptureUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), url));
-        pictures.add(mImageCaptureUri);
-        Log.d("add된 파일은", mImageCaptureUri.getPath() + "입니다.");
-        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
-        // 특정기기에서 사진을 저장못하는 문제가 있어 다음을 주석처리 합니다.
-        //intent.putExtra("return-data", true);
-        startActivityForResult(intent, PICK_FROM_CAMERA);
+        if (test) {
+            deletePicture();
+            finish();
+        } else {
+            showAlert("오류가 발생하였습니다." + "\n" + "문제가 계속된다면 홈페이지에 문의 주세요");
+            finish();
+        }
     }
 
-    private void doTakeAlbumAction() {
-        // 앨범 호출
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
-        startActivityForResult(intent, PICK_FROM_ALBUM);
-    }
-*/
-
-    /*protected ImageView makeImage(){
-
-
-        ImageView mPhotoImageView = new ImageView(getBaseContext()){
-
-            @Override
-            public void setOnClickListener(OnClickListener l) {
-                super.setOnClickListener(l);
-                flow_layout8.removeView(this);
-            }
-        };
-
-        //LayoutParams params=new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-        FlowLayout.LayoutParams params=new FlowLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-        mPhotoImageView.setLayoutParams(params);
-        //mPhotoImageView.setScaleType(ImageView.ScaleType.MATRIX);  // 매트릭스로 이동시키기 때문에 scaleType은 반드시 Matrix로 지정해야한다.
-        //mPhotoImageView.setImageBitmap(bm);      // 이미지를 등록한다.
-        //Matrix m = new Matrix();
-        //m.postTranslate(0,0);    // 이미지뷰에 등록할 비트맵의 초기위치.
-        //mPhotoImageView.setImageMatrix(m);       // 매트릭스를 이미지뷰에 적용한다.
-        mPhotoImageView.setBackgroundColor(Color.BLUE);
-        flow_layout8.addView(mPhotoImageView);      // 레이아웃에 이미지뷰를 등록한다.
-
-
-        return mPhotoImageView;
-    }*/
-
-
-
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) {
-            return;
-        }
-
-
-
-        switch (requestCode) {
-            case CROP_FROM_CAMERA: {
-                // 크롭이 된 이후의 이미지를 넘겨 받습니다.
-                // 이미지뷰에 이미지를 보여준다거나 부가적인 작업 이후에
-                // 임시 파일을 삭제합니다.
-                final Bundle extras = data.getExtras();
-                resizedPictures.add(data.getData());
-                if (extras != null) {
-                    Bitmap photo = extras.getParcelable("data");
-                    ImageView mPhotoImageView = makeImage();
-                    mPhotoImageView.setImageBitmap(photo);
-                }
-
-                break;
-            }
-
-            case PICK_FROM_ALBUM: {
-                // 이후의 처리가 카메라와 같으므로 일단  break없이 진행합니다.
-                // 실제 코드에서는 좀더 합리적인 방법을 선택하시기 바랍니다.
-
-                mImageCaptureUri = data.getData();
-                pictures.add(mImageCaptureUri);
-                Log.d("add된 파일은", new File(mImageCaptureUri.getPath()).getAbsolutePath() + "입니다.");
-            }
-
-            case PICK_FROM_CAMERA: {
-                // 이미지를 가져온 이후의 리사이즈할 이미지 크기를 결정합니다.
-                // 이후에 이미지 크롭 어플리케이션을 호출하게 됩니다.
-
-                Intent intent = new Intent("com.android.camera.action.CROP");
-                intent.setDataAndType(mImageCaptureUri, "image*//*");
-
-                intent.putExtra("outputX", 200);
-                intent.putExtra("outputY", 200);
-                intent.putExtra("aspectX", 1);
-                intent.putExtra("aspectY", 1);
-                intent.putExtra("scale", true);
-                intent.putExtra("return-data", true);
-                startActivityForResult(intent, CROP_FROM_CAMERA);
-
-                break;
-            }
-        }
-    }*/
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
             goBack();
@@ -726,9 +499,6 @@ public class WriteActivity extends ImageSelectHelperActivity implements View.OnC
                 Log.d("List의 모든것을 불러온다!!",list.get(i).get(a));
             }
         }
-
-
-
 
 
         return list;

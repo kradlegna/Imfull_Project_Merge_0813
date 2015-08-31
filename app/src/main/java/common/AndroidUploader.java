@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import imfull.com.imfull_project.WriteActivity;
+
 
 public class AndroidUploader {
     private String url;
@@ -22,6 +24,7 @@ public class AndroidUploader {
     static String twoHyphens = "--";
     static String boundary = "*****b*o*u*n*d*a*r*y*****";
     private DataOutputStream dataStream = null;
+    WriteActivity activity;
 
     public enum ReturnCode {noPicture, unknown, http201, http400, http401, http403, http404, http500}
     /**
@@ -34,9 +37,10 @@ public class AndroidUploader {
      */
     private String TAG;
 
-    public AndroidUploader(String url) {
+    public AndroidUploader(String url,WriteActivity activity) {
         this.url = url;
         this.TAG = this.getClass().getName();
+        this.activity=activity;
     }
 
     public ReturnCode uploadForm( List list ) {
@@ -45,15 +49,15 @@ public class AndroidUploader {
         return null;
     }
 
-    private void writeFormField(String fieldName, Object fieldValue, boolean isString) {
+    private void writeFormField(String fieldName, String fieldValue, boolean isString) {
         try {
             dataStream.writeBytes(twoHyphens + boundary + CRLF);
             dataStream.writeBytes("Content-Disposition: form-data; name=\"" + fieldName + "\"" + CRLF);
             dataStream.writeBytes(CRLF);
             if(isString) {
-                dataStream.writeBytes((String)fieldValue);
+                dataStream.writeUTF(fieldValue);
             }else{
-                dataStream.writeByte((Integer)fieldValue);
+                dataStream.writeBytes(fieldValue);
             }
             dataStream.writeBytes(CRLF);
         } catch (Exception e) {
@@ -139,7 +143,10 @@ public class AndroidUploader {
         protected ReturnCode doInBackground(List... params){
             if (params != null) {
                 init();
-                try { setData( params[0] ); } catch (IOException e) { Log.d(TAG, "setData 에러"); }
+                try { setData( params[0] ); } catch (IOException e) {
+                    activity.finishActivity(false);
+                    Log.d(TAG, "setData 에러");
+                }
                 Log.d(TAG, "***********전송완료***********");
                 String response = getResponse(conn);
                 try { Log.d(TAG, "responseCode : " + conn.getResponseCode() ); }
@@ -172,7 +179,7 @@ public class AndroidUploader {
         }
         private void setTagForm(ArrayList<String> tagData) {
             for (int i = 0; i < tagData.size(); i++) {
-                writeFormField("tag", tagData.get(i),true);
+                writeFormField("tag", tagData.get(i),false);
                 Log.d("AndroidUploader-tag", tagData.get(i));
     }
 }
@@ -199,6 +206,7 @@ public class AndroidUploader {
             dataStream.close();
             dataStream = null;
             Log.d("AndroidUploader-photo", "스트림 종료");
+            activity.finishActivity(true);
         }
         private String getResponse(HttpURLConnection conn) {
             try {
